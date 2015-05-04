@@ -10,11 +10,12 @@ namespace Teatr
 {
     public class Program
     {
+        [STAThread]
         public static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run();
+            Application.Run(new Main());
         }
     }
 }
