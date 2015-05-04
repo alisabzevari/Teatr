@@ -5,6 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Teatr.OmdbClient;
 
 namespace Teatr.MovieDiscovery
@@ -45,13 +48,34 @@ namespace Teatr.MovieDiscovery
             "_",
             "noscr",
             "jns",
-            ".",            "[",
+            ".",
+            "[",
             "]",
             "(",
             ")"
         };
 
         private readonly OmdbClient.OmdbClient _client = new OmdbClient.OmdbClient();
+
+        public void DiscoverMoviesInDirectory(DirectoryInfo dir)
+        {
+            var result = Parallel.ForEach(dir.EnumerateDirectories(), (directory, state, lng) =>
+            {
+                var movieInfoPath = Path.Combine(directory.FullName, "MovieInfo.json");
+                if (!File.Exists(movieInfoPath))
+                {
+                    var movieInfo = DiscoverMovie(directory.Name);
+                    if (movieInfo != null)
+                    {
+                        File.WriteAllText(movieInfoPath, JsonConvert.SerializeObject(movieInfo, Formatting.Indented));
+                    }
+                }
+            });
+            //foreach (var directory in dir.EnumerateDirectories())
+            //{
+            //}
+        }
+
         public OmdbMovie DiscoverMovie(string query)
         {
             var urlStr = GetImDbUrl(CleanTitle(query));
