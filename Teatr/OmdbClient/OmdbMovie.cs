@@ -8,6 +8,7 @@ namespace Teatr.OmdbClient
 {
     public class OmdbMovie
     {
+        internal OmdbMovie() { }
         public string Title { get; set; }
         public int Year { get; set; }
         public string Rated { get; set; }
@@ -22,10 +23,15 @@ namespace Teatr.OmdbClient
         public string Country { get; set; }
         public string Awards { get; set; }
         public Uri Poster { get; set; }
-        public int Metascore { get; set; }
+        public string Metascore { get; set; }
         public float ImdbRating { get; set; }
         public int ImdbVotes { get; set; }
         public string ImdbId { get; set; }
         public OmdbMovieType Type { get; set; }
+
+        public override string ToString()
+        {
+            return Title + " - " + Year;
+        }
     }
 }

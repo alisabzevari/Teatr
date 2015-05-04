@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C33F44F5-BDBB-4F23-9A35-8F335579A7B1}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Teatr</RootNamespace>
     <AssemblyName>Teatr</AssemblyName>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -42,10 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BL\OmdbClient\OmdbClient.cs" />
-    <Compile Include="BL\OmdbClient\OmdbMovie.cs" />
-    <Compile Include="BL\OmdbClient\OmdbMovieType.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="MovieDiscovery\MovieDiscovery.cs" />
+    <Compile Include="OmdbClient\OmdbClient.cs" />
+    <Compile Include="OmdbClient\OmdbMovie.cs" />
+    <Compile Include="OmdbClient\OmdbMovieType.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

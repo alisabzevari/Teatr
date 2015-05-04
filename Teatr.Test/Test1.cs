@@ -34,13 +34,13 @@ namespace Teatr.Test
             Assert.NotNull(result);
         }
 
-        [Fact]
-        public void TestSimilaritySearch()
-        {
-            var omdb = new Teatr.OmdbClient.OmdbClient();
-            var result = omdb.SimilaritySearch("Cinderella Man (2005)");
-            Assert.Equal("tt0352248", result.ImdbId);
-        }
+        //[Fact]
+        //public void TestSimilaritySearch()
+        //{
+        //    var omdb = new Teatr.OmdbClient.OmdbClient();
+        //    var result = omdb.SimilaritySearch("Cinderella Man (2005)");
+        //    Assert.Equal("tt0352248", result.ImdbId);
+        //}
 
     }
 }

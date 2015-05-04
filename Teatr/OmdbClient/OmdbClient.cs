@@ -13,24 +13,6 @@ namespace Teatr.OmdbClient
     public class OmdbClient
     {
         private readonly string baseUrl = "http://www.omdbapi.com/?";
-        private readonly string googleApiBaseUrl = "https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=imdb ";
-
-        public OmdbMovie SimilaritySearch(string query)
-        {
-            var webClient = new WebClient();
-            dynamic result = JObject.Parse(webClient.DownloadString(googleApiBaseUrl + query));
-            try
-            {
-                Uri firstResultUri = new Uri(result.responseData.results[0].url.ToString());
-                if (firstResultUri.Host.Contains("www.imdb.com"))
-                {
-                    return GetMovieDetails(firstResultUri.Segments.Last().Replace("/", ""));
-                }
-                return null;
-            }
-            catch { }
-            return null;
-        }
 
         public IEnumerable<OmdbMovie> Search(string query,
             OmdbMovieType? movieType = null,
@@ -93,5 +75,6 @@ namespace Teatr.OmdbClient
             catch { }
             return null;
         }
+
     }
 }
