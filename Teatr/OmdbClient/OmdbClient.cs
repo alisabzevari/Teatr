@@ -50,10 +50,10 @@ namespace Teatr.OmdbClient
             {
                 var returnValue = new OmdbMovie()
                 {
-                    Actors = ((string)result.Actors.ToString()).Split(',').Select(s => s.Trim()),
+                    Actors = ((string)result.Actors.ToString()).Split(',').Select(s => s.Trim()).ToArray(),
                     Awards = result.Awards,
                     Country = result.Country,
-                    Genre = ((string)result.Genre.ToString()).Split(',').Select(s => s.Trim()),
+                    Genre = ((string)result.Genre.ToString()).Split(',').Select(s => s.Trim()).ToArray(),
                     Director = result.Director,
                     ImdbId = result.imdbID,
                     ImdbRating = result.imdbRating,

@@ -59,7 +59,7 @@ namespace Teatr.MovieDiscovery
 
         public void DiscoverMoviesInDirectory(DirectoryInfo dir)
         {
-            var result = Parallel.ForEach(dir.EnumerateDirectories(), (directory, state, lng) =>
+            foreach (var directory in dir.EnumerateDirectories())
             {
                 var movieInfoPath = Path.Combine(directory.FullName, "MovieInfo.json");
                 if (!File.Exists(movieInfoPath))
@@ -70,10 +70,7 @@ namespace Teatr.MovieDiscovery
                         File.WriteAllText(movieInfoPath, JsonConvert.SerializeObject(movieInfo, Formatting.Indented));
                     }
                 }
-            });
-            //foreach (var directory in dir.EnumerateDirectories())
-            //{
-            //}
+            }
         }
 
         public OmdbMovie DiscoverMovie(string query)

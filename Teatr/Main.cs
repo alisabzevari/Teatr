@@ -79,5 +79,11 @@ namespace Teatr
                     });
             }
         }
+
+        private void lstMovies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstMovies.SelectedItems.Count > 0)
+                propertyGrid.SelectedObject = lstMovies.SelectedItems[0].Tag;
+        }
     }
 }
