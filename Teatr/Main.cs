@@ -24,66 +24,104 @@ namespace Teatr
             InitializeComponent();
         }
 
-        private void mnuOpenFolder_Click(object sender, EventArgs e)
-        {
-            if (dlgFolders.ShowDialog() == DialogResult.OK)
-            {
-                DiscoverMovies(dlgFolders.SelectedPath);
-            }
-        }
-
-        private void DiscoverMovies(string path)
-        {
-            var subFolders = new DirectoryInfo(path).EnumerateDirectories().ToList();
-            status.Text = "Discovering movies...";
-            progress.Visible = true;
-            progress.Maximum = subFolders.Count();
-            foreach (var folder in subFolders)
-            {
-                var item = new ListViewItem(new[] { "Discovering...", "", "", folder.FullName });
-                lstMovies.Items.Add(item);
-                Task.Factory.StartNew(() =>
-                    {
-                        var movieInfoPath = Path.Combine(folder.FullName, "MovieInfo.json");
-                        OmdbMovie movie;
-                        if (!File.Exists(movieInfoPath))
-                        {
-                            movie = _movieDiscovery.DiscoverMovie(folder.Name);
-                            if (movie != null)
-                                File.WriteAllText(movieInfoPath, JsonConvert.SerializeObject(movie, Formatting.Indented));
-                        }
-                        else
-                            movie = JsonConvert.DeserializeObject<OmdbMovie>(File.ReadAllText(movieInfoPath));
-
-                        this.Invoke((MethodInvoker)(() =>
-                        {
-                            if (movie != null)
-                            {
-                                item.SubItems[0].Text = movie.Title;
-                                item.SubItems[1].Text = movie.Year.ToString();
-                                item.SubItems[2].Text = string.Join(", ", movie.Genre);
-                                item.Tag = movie;
-                            }
-                            else
-                            {
-                                item.SubItems[0].Text = "Not Found";
-                                item.BackColor = Color.Red;
-                            }
-                            progress.PerformStep();
-                            if (progress.Value == progress.Maximum - 1)
-                            {
-                                status.Text = "Ready";
-                                progress.Visible = false;
-                            }
-                        }));
-                    });
-            }
-        }
-
         private void lstMovies_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstMovies.SelectedItems.Count > 0)
                 propertyGrid.SelectedObject = lstMovies.SelectedItems[0].Tag;
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            foreach (var movieFolder in Program.Settings.MovieFolders)
+            {
+                var dirs = new DirectoryInfo(movieFolder).EnumerateDirectories();
+                foreach (var dir in dirs)
+                {
+                    var movieInfoPath = Path.Combine(dir.FullName, "MovieInfo.json");
+                    if (File.Exists(movieInfoPath))
+                    {
+                        var movieInfo = JsonConvert.DeserializeObject<OmdbMovie>(File.ReadAllText(movieInfoPath));
+                        lstMovies.Items.Add(CreateLstItemFrom(movieInfoPath, movieInfo));
+                    }
+                    else
+                    {
+                        lstMovies.Items.Add(CreateLstItemFrom(dir.FullName));
+                    }
+                }
+            }
+        }
+
+        private void mnuDiscover_Click(object sender, EventArgs e)
+        {
+            DiscoverMovies();
+        }
+
+        private ListViewItem CreateLstItemFrom(string path, OmdbMovie movieInfo = null)
+        {
+            if (movieInfo == null)
+            {
+                var item = new ListViewItem(new[] {"", "", "", "", path});
+                return item;
+            }
+            else
+            {
+                var item = new ListViewItem(new[] { movieInfo.Title, movieInfo.Year.ToString(), movieInfo.ImdbRating.ToString(), string.Join(", ", movieInfo.Genre), path });
+                item.Tag = movieInfo;
+                return item;
+            }
+        }
+        private void DiscoverMovies()
+        {
+            var items = new Dictionary<DirectoryInfo, ListViewItem>();
+            foreach (ListViewItem item in lstMovies.Items)
+            {
+                if (item.Tag == null)
+                {
+                    items.Add(new DirectoryInfo(item.SubItems[3].Text), item);
+                }
+            }
+            status.Text = "Discovering movies...";
+            progress.Visible = true;
+            progress.Minimum = 0;
+            progress.Maximum = items.Count();
+            progress.Value = 0;
+            foreach (var item in items)
+            {
+                item.Value.SubItems[0].Text = "Discovering...";
+                item.Value.BackColor = Color.Yellow;
+                Task.Factory.StartNew(() =>
+                {
+                    var movieInfoPath = Path.Combine(item.Key.FullName, "MovieInfo.json");
+                    OmdbMovie movie;
+                    movie = _movieDiscovery.DiscoverMovie(item.Key.Name);
+                    if (movie != null)
+                        File.WriteAllText(movieInfoPath, JsonConvert.SerializeObject(movie, Formatting.Indented));
+
+                    this.Invoke((MethodInvoker)(() =>
+                    {
+                        if (movie != null)
+                        {
+                            item.Value.SubItems[0].Text = movie.Title;
+                            item.Value.SubItems[1].Text = movie.Year.ToString();
+                            item.Value.SubItems[2].Text = movie.ImdbRating.ToString();
+                            item.Value.SubItems[3].Text = string.Join(", ", movie.Genre);
+                            item.Value.Tag = movie;
+                            item.Value.BackColor = DefaultBackColor;
+                        }
+                        else
+                        {
+                            item.Value.SubItems[0].Text = "Not Found";
+                            item.Value.BackColor = Color.Tomato;
+                        }
+                        progress.PerformStep();
+                        if (progress.Value >= progress.Maximum)
+                        {
+                            status.Text = "Ready";
+                            progress.Visible = false;
+                        }
+                    }));
+                });
+            }
         }
     }
 }
