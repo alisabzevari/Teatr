@@ -54,6 +54,7 @@
             // 
             // lstMovies
             // 
+            this.lstMovies.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.lstMovies.AllowColumnReorder = true;
             this.lstMovies.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colTitle,
@@ -64,6 +65,7 @@
             this.lstMovies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstMovies.FullRowSelect = true;
             this.lstMovies.GridLines = true;
+            this.lstMovies.HideSelection = false;
             this.lstMovies.Location = new System.Drawing.Point(0, 0);
             this.lstMovies.Name = "lstMovies";
             this.lstMovies.Size = new System.Drawing.Size(654, 499);
@@ -83,12 +85,12 @@
             // 
             // colGenre
             // 
-            this.colGenre.DisplayIndex = 2;
+            this.colGenre.DisplayIndex = 3;
             this.colGenre.Text = "Genre";
             // 
             // colPath
             // 
-            this.colPath.DisplayIndex = 3;
+            this.colPath.DisplayIndex = 4;
             this.colPath.Text = "Path";
             this.colPath.Width = 350;
             // 
@@ -176,6 +178,7 @@
             // colRank
             // 
             this.colRank.Text = "Imdb Rating";
+            this.colRank.DisplayIndex = 2;
             // 
             // Main
             // 

@@ -34,6 +34,8 @@ namespace Teatr
         {
             foreach (var movieFolder in Program.Settings.MovieFolders)
             {
+                if (!Directory.Exists(movieFolder))
+                    continue;
                 var dirs = new DirectoryInfo(movieFolder).EnumerateDirectories();
                 foreach (var dir in dirs)
                 {
