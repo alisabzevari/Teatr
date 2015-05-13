@@ -28,28 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lstMovies = new System.Windows.Forms.ListView();
             this.colTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDiscover = new System.Windows.Forms.ToolStripMenuItem();
             this.dlgFolders = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.progress = new System.Windows.Forms.ToolStripProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.mnuAddFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.colRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mnuListItems = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.mnuListItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstMovies
@@ -62,6 +66,7 @@
             this.colRank,
             this.colGenre,
             this.colPath});
+            this.lstMovies.ContextMenuStrip = this.mnuListItems;
             this.lstMovies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstMovies.FullRowSelect = true;
             this.lstMovies.GridLines = true;
@@ -83,14 +88,16 @@
             // 
             this.colYear.Text = "Year";
             // 
+            // colRank
+            // 
+            this.colRank.Text = "Imdb Rating";
+            // 
             // colGenre
             // 
-            this.colGenre.DisplayIndex = 3;
             this.colGenre.Text = "Genre";
             // 
             // colPath
             // 
-            this.colPath.DisplayIndex = 4;
             this.colPath.Text = "Path";
             this.colPath.Width = 350;
             // 
@@ -121,10 +128,16 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // mnuAddFolder
+            // 
+            this.mnuAddFolder.Name = "mnuAddFolder";
+            this.mnuAddFolder.Size = new System.Drawing.Size(132, 22);
+            this.mnuAddFolder.Text = "Add Folder";
+            // 
             // mnuDiscover
             // 
             this.mnuDiscover.Name = "mnuDiscover";
-            this.mnuDiscover.Size = new System.Drawing.Size(152, 22);
+            this.mnuDiscover.Size = new System.Drawing.Size(132, 22);
             this.mnuDiscover.Text = "Discover";
             this.mnuDiscover.Click += new System.EventHandler(this.mnuDiscover_Click);
             // 
@@ -169,16 +182,19 @@
             this.splitContainer1.SplitterDistance = 654;
             this.splitContainer1.TabIndex = 3;
             // 
-            // mnuAddFolder
+            // mnuListItems
             // 
-            this.mnuAddFolder.Name = "mnuAddFolder";
-            this.mnuAddFolder.Size = new System.Drawing.Size(152, 22);
-            this.mnuAddFolder.Text = "Add Folder";
+            this.mnuListItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInExplorerToolStripMenuItem});
+            this.mnuListItems.Name = "mnuListItems";
+            this.mnuListItems.Size = new System.Drawing.Size(162, 48);
             // 
-            // colRank
+            // openInExplorerToolStripMenuItem
             // 
-            this.colRank.Text = "Imdb Rating";
-            this.colRank.DisplayIndex = 2;
+            this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
+            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.openInExplorerToolStripMenuItem.Text = "Open in Explorer";
+            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -200,6 +216,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.mnuListItems.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +240,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem mnuAddFolder;
         private System.Windows.Forms.ColumnHeader colRank;
+        private System.Windows.Forms.ContextMenuStrip mnuListItems;
+        private System.Windows.Forms.ToolStripMenuItem openInExplorerToolStripMenuItem;
     }
 }

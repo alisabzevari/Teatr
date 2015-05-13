@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace Teatr
                     if (File.Exists(movieInfoPath))
                     {
                         var movieInfo = JsonConvert.DeserializeObject<OmdbMovie>(File.ReadAllText(movieInfoPath));
-                        lstMovies.Items.Add(CreateLstItemFrom(movieInfoPath, movieInfo));
+                        lstMovies.Items.Add(CreateLstItemFrom(dir.FullName, movieInfo));
                     }
                     else
                     {
@@ -79,7 +80,7 @@ namespace Teatr
             {
                 if (item.Tag == null)
                 {
-                    items.Add(new DirectoryInfo(item.SubItems[3].Text), item);
+                    items.Add(new DirectoryInfo(item.SubItems[4].Text), item);
                 }
             }
             status.Text = "Discovering movies...";
@@ -123,6 +124,14 @@ namespace Teatr
                         }
                     }));
                 });
+            }
+        }
+
+        private void openInExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstMovies.SelectedItems.Count > 0)
+            {
+                Process.Start(lstMovies.SelectedItems[0].SubItems[4].Text);
             }
         }
     }
