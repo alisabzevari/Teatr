@@ -5,13 +5,15 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Configuration;
 using Newtonsoft.Json.Serialization;
-using Microsoft.Dnx.Runtime;
+using Microsoft.AspNet.StaticFiles;
+using Microsoft.AspNet.FileProviders;
+using Microsoft.Framework.Runtime;
 
 namespace Teatr
 {
     public class Startup
     {
-        private IConfiguration Configuration { get; set; }
+        private Options Options { get; set; }
 
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
@@ -19,11 +21,11 @@ namespace Teatr
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
 
-            Configuration = builder.Build();
+            Options = ConfigurationBinder.Bind<Options>(builder.Build());
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton((serviceProvider) => ConfigurationBinder.Bind<Options>(Configuration));
+            services.AddSingleton((serviceProvider) => Options);
             services.AddMvc().Configure<MvcOptions>(options =>
             {
                 var jsonFormatter = options.OutputFormatters.OfType<JsonOutputFormatter>().First();
@@ -34,8 +36,14 @@ namespace Teatr
 
         public void Configure(IApplicationBuilder app)
         {
+            var root = Options.ClientRoot;
             app.UseErrorPage();
             app.UseMvc();
+            var fileServerOptions = new FileServerOptions()
+            {
+                FileProvider = new PhysicalFileProvider(root)
+            };
+            app.UseFileServer(fileServerOptions);
         }
     }
 }
