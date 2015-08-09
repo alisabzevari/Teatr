@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Configuration;
-using Microsoft.Framework.Runtime;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Dnx.Runtime;
 
 namespace Teatr
 {
@@ -25,11 +20,6 @@ namespace Teatr
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
-
-            string result = string.Empty;
-            result = JsonConvert.DeserializeObject<string>("null"); //null, ok
-            result = JsonConvert.DeserializeObject<string>("'value'"); //throwing error, expecting "value"
-            result = JsonConvert.DeserializeObject<string>("''"); //throwing error, expecting string.empty
         }
         public void ConfigureServices(IServiceCollection services)
         {
