@@ -34,9 +34,9 @@ namespace Teatr
             });
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, Options options)
         {
-            var root = Options.ClientRoot;
+            var root = options.ClientRoot;
             app.UseErrorPage();
             app.UseMvc();
             var fileServerOptions = new FileServerOptions()
