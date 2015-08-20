@@ -10,6 +10,7 @@ System.config({
   map: {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.16.0",
     "aurelia-framework": "github:aurelia/framework@0.15.0",
+    "material-design-lite": "github:google/material-design-lite@1.0.4",
     "typescript": "npm:typescript@1.6.0-dev.20150820",
     "github:aurelia/binding@0.8.6": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.9.2",
