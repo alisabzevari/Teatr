@@ -158,9 +158,6 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
-node_modules/
-jspm_packages/
-typings/
 
 # RIA/Silverlight projects
 Generated_Code/
@@ -192,3 +189,13 @@ ModelManifest.xml
 
 # vs 2015
 .vs/
+
+# Client Side Items
+node_modules/
+jspm_packages/
+typings/
+
+# Aurelia Items
+src/aurelia/src/**/*.js
+!src/aurelia/src/config.js
+!src/aurelia/typings/

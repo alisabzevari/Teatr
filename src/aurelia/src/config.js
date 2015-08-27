@@ -11,7 +11,7 @@ System.config({
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.16.0",
     "aurelia-framework": "github:aurelia/framework@0.15.0",
     "material-design-lite": "github:google/material-design-lite@1.0.4",
-    "typescript": "npm:typescript@1.6.0-dev.20150820",
+    "typescript": "npm:typescript@1.6.0-dev.20150824",
     "github:aurelia/binding@0.8.6": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.9.2",
       "aurelia-metadata": "github:aurelia/metadata@0.7.3",
@@ -116,7 +116,7 @@ System.config({
       "core-js": "npm:core-js@0.9.18"
     },
     "github:jspm/nodelibs-buffer@0.1.0": {
-      "buffer": "npm:buffer@3.4.2"
+      "buffer": "npm:buffer@3.4.3"
     },
     "github:jspm/nodelibs-os@0.1.0": {
       "os-browserify": "npm:os-browserify@0.1.2"
@@ -127,7 +127,7 @@ System.config({
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"
     },
-    "npm:buffer@3.4.2": {
+    "npm:buffer@3.4.3": {
       "base64-js": "npm:base64-js@0.0.8",
       "ieee754": "npm:ieee754@1.1.6",
       "is-array": "npm:is-array@1.0.1"
@@ -143,7 +143,7 @@ System.config({
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
-    "npm:typescript@1.6.0-dev.20150820": {
+    "npm:typescript@1.6.0-dev.20150824": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
