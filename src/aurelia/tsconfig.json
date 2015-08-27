@@ -22,6 +22,8 @@
         "./src/main.ts",
         "./src/resources/index.ts",
         "./src/resources/mdl.ts",
+        "./src/views/home.ts",
+        "./src/views/settings.ts",
         "./typings/tsd.d.ts"
     ]
 }
