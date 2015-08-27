@@ -1,3 +1,46 @@
 <template>
-  Settings
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col"></div>
+    <div class="mdl-cell mdl-cell--4-col">
+      <table mdl="" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+        <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">Active</th>
+            <th class="mdl-data-table__cell--non-numeric">Path</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr repeat.for="item of settings">
+            <td>
+              <label mdl="" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+                <input type="checkbox" class="mdl-switch__input" checked.bind="item.active" />
+                <span class="mdl-switch__label"></span>
+              </label>
+            </td>
+            <td>
+              <div mdl="" class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" value.bind="item.path"/>
+                <label class="mdl-textfield__label">Path</label>
+              </div>
+            </td>
+          </tr>
+          <!-- <tr>
+            <td class="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+            <td>25</td>
+            <td>$2.90</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+            <td>50</td>
+            <td>$1.25</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
+            <td>10</td>
+            <td>$2.35</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
