@@ -2,7 +2,7 @@ import {autoinject, customAttribute, inject} from "aurelia-framework";
 declare var componentHandler: any;
 
 @customAttribute("mdl", {})
-@autoinject()
+@inject(Element)
 export class MdlAttr {
   constructor(private element: Element) {
   }
