@@ -1,12 +1,13 @@
 import {HttpClient} from "aurelia-http-client";
 import {autoinject} from "aurelia-framework";
 import {Movie} from "../model/Movie";
+import {FilterObject} from "../model/FilterObject";
 import * as _ from "lodash";
 
 @autoinject()
 export class Home {
   public movies: Movie[];
-  public allGenres: string[];
+  public filterObj: FilterObject = {};
 
   constructor(private http: HttpClient) {
     this.http.get("/api/movie")
@@ -17,10 +18,14 @@ export class Home {
   }
 
   public createFilterMaterials() {
-    this.allGenres = _(this.movies)
+    this.filterObj.genres = [];
+    var genreNames = _(this.movies)
       .map(movie => movie.genre)
       .flatten()
       .uniq()
       .value();
+    _.forEach(genreNames, g => {
+      this.filterObj.genres.push({ name: g, selected: true });
+    });
   }
 }

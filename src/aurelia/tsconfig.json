@@ -20,10 +20,12 @@
     "files": [
         "./src/app.ts",
         "./src/main.ts",
+        "./src/model/FilterObject.ts",
         "./src/model/Movie.ts",
         "./src/resources/index.ts",
         "./src/resources/mat-chk.ts",
         "./src/resources/materialize.ts",
+        "./src/resources/value-converters.ts",
         "./src/views/home.ts",
         "./src/views/settings.ts",
         "./typings/tsd.d.ts"
