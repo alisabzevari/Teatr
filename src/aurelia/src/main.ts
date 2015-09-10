@@ -5,6 +5,5 @@ export function configure(aurelia: Aurelia) {
     .standardConfiguration()
     .developmentLogging()
     .feature("resources", {});
-  console.log("main");
   aurelia.start().then(a => a.setRoot());
 }

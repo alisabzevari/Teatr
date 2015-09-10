@@ -3,15 +3,62 @@
 
 <head>
   <meta charset="utf-8">
-  <!-- <link type="text/css" rel="stylesheet" href="jspm_packages/npm/materialize-css@0.96.1/bin/materialize.css"  media="screen,projection"/> -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="lib/materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="app.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body aurelia-app="main">
-  <!-- <script src="jspm_packages/npm/jquery@2.1.4/dist/jquery.js" charset="utf-8"></script> -->
-  <!-- <script src="jspm_packages/npm/materialize-css@0.96.1/bin/materialize.js" charset="utf-8"></script> -->
+  <div class="full-height valign-wrapper">
+    <div class="preloader-wrapper active valign center-block">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div>
+        <div class="gap-patch">
+          <div class="circle"></div>
+        </div>
+        <div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="lib/jquery/jquery.js" charset="utf-8"></script>
   <script src="lib/materialize/js/materialize.min.js"></script>
   <script src="jspm_packages/system.js" charset="utf-8"></script>
@@ -22,3 +69,7 @@
 </body>
 
 </html>
+<!--
+TODO: Solve the problem of loading jquery and materialize-css (it's js and css) with SystemJs
+TODO: Fix problem of loading material icons from cdn
+-->
