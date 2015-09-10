@@ -20,6 +20,7 @@
     "files": [
         "./src/app.ts",
         "./src/main.ts",
+        "./src/model/Movie.ts",
         "./src/resources/index.ts",
         "./src/resources/materialize.ts",
         "./src/views/home.ts",

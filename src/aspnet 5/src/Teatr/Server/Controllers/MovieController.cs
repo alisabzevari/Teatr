@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Configuration;
+using System.IO;
+using Teatr.OmdbClient;
+using Newtonsoft.Json;
 
 namespace Teatr.Controllers
 {
     [Route("api/[controller]")]
-    public class TestController : Controller
+    public class MovieController : Controller
     {
         private readonly Options _options;
 
-        public TestController(Options options)
+        public MovieController(Options options)
         {
             _options = options;
         }
@@ -20,7 +23,27 @@ namespace Teatr.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return this.Json(new { FirstName = "Ali", Age = 31 });
+            var result = new List<OmdbMovie>();
+            foreach (var movieFolder in _options.SearchPaths)
+            {
+                if (!Directory.Exists(movieFolder))
+                    continue;
+                var dirs = new DirectoryInfo(movieFolder).EnumerateDirectories();
+                foreach (var dir in dirs)
+                {
+                    var movieInfoPath = Path.Combine(dir.FullName, "MovieInfo.json");
+                    if (System.IO.File.Exists(movieInfoPath))
+                    {
+                        var movieInfo = JsonConvert.DeserializeObject<OmdbMovie>(System.IO.File.ReadAllText(movieInfoPath));
+                        result.Add(movieInfo);
+                    }
+                    else
+                    {
+                        //lstMovies.Items.Add(CreateLstItemFrom(dir.FullName));
+                    }
+                }
+            }
+            return Json(result);
         }
     }
 }

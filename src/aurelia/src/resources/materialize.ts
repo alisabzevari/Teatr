@@ -9,6 +9,8 @@ export class MaterializeAttr {
   public attached() {
     if (this.element.classList.contains("button-collapse"))
       $(this.element).sideNav();
+    if (this.element.classList.contains("materialboxed"))
+      $(this.element).materialbox();
   }
 }
 

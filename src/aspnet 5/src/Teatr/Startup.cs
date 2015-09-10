@@ -36,6 +36,7 @@ namespace Teatr
 
         public void Configure(IApplicationBuilder app, Options options)
         {
+
             var root = options.ClientRoot;
             app.UseErrorPage();
             app.UseMvc();

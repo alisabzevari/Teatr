@@ -10,6 +10,7 @@ System.config({
   map: {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.16.0",
     "aurelia-framework": "github:aurelia/framework@0.15.0",
+    "aurelia-http-client": "github:aurelia/http-client@0.11.0",
     "hammerjs": "npm:hammerjs@2.0.4",
     "jquery": "github:components/jquery@2.1.4",
     "material-design-lite": "github:google/material-design-lite@1.0.4",
@@ -57,6 +58,10 @@ System.config({
     },
     "github:aurelia/history-browser@0.7.0": {
       "aurelia-history": "github:aurelia/history@0.6.1",
+      "core-js": "npm:core-js@0.9.18"
+    },
+    "github:aurelia/http-client@0.11.0": {
+      "aurelia-path": "github:aurelia/path@0.9.0",
       "core-js": "npm:core-js@0.9.18"
     },
     "github:aurelia/loader-default@0.9.5": {
