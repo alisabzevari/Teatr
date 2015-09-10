@@ -22,6 +22,7 @@
         "./src/main.ts",
         "./src/model/Movie.ts",
         "./src/resources/index.ts",
+        "./src/resources/mat-chk.ts",
         "./src/resources/materialize.ts",
         "./src/views/home.ts",
         "./src/views/settings.ts",

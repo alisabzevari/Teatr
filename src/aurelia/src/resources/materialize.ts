@@ -1,4 +1,4 @@
-import {autoinject, customAttribute, inject} from "aurelia-framework";
+import {autoinject, customAttribute, customElement, inject} from "aurelia-framework";
 
 @customAttribute("materialize", {})
 @autoinject()
@@ -11,9 +11,9 @@ export class MaterializeAttr {
       $(this.element).sideNav();
     if (this.element.classList.contains("materialboxed"))
       $(this.element).materialbox();
+    if (this.element.classList.contains("collapsible"))
+      $(this.element).collapsible();
   }
 }
 
-// autoinject didn't work
 // customAttribute signature was different from documentation
-//
