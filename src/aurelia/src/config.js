@@ -10,7 +10,11 @@ System.config({
   map: {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.16.0",
     "aurelia-framework": "github:aurelia/framework@0.15.0",
+    "hammerjs": "npm:hammerjs@2.0.4",
+    "jquery": "github:components/jquery@2.1.4",
     "material-design-lite": "github:google/material-design-lite@1.0.4",
+    "materialize-css": "npm:materialize-css@0.96.1",
+    "pickadate": "npm:pickadate@3.5.6",
     "typescript": "npm:typescript@1.6.0-dev.20150824",
     "github:aurelia/binding@0.8.6": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.9.2",
@@ -137,11 +141,23 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
+    "npm:hammerjs@2.0.4": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:jquery@2.1.4": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:materialize-css@0.96.1": {
+      "process": "github:jspm/nodelibs-process@0.1.1"
+    },
     "npm:os-browserify@0.1.2": {
       "os": "github:jspm/nodelibs-os@0.1.0"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.1"
+    },
+    "npm:pickadate@3.5.6": {
+      "jquery": "npm:jquery@2.1.4"
     },
     "npm:typescript@1.6.0-dev.20150824": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",

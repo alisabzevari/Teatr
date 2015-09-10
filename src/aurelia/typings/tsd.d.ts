@@ -26,3 +26,5 @@
 /// <reference path="aurelia/aurelia-templating-resources.d.ts" />
 /// <reference path="aurelia/aurelia-templating-router.d.ts" />
 /// <reference path="aurelia/aurelia-templating.d.ts" />
+/// <reference path="jquery/jquery.d.ts" />
+/// <reference path="materialize/materialize.d.ts" />

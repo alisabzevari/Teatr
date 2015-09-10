@@ -1,14 +1,14 @@
 import {autoinject, customAttribute, inject} from "aurelia-framework";
-declare var componentHandler: any;
 
-@customAttribute("mdl", {})
-@inject(Element)
-export class MdlAttr {
+@customAttribute("materialize", {})
+@autoinject()
+export class MaterializeAttr {
   constructor(private element: Element) {
   }
 
   public attached() {
-    componentHandler.upgradeElement(this.element);
+    if (this.element.classList.contains("button-collapse"))
+      $(this.element).sideNav();
   }
 }
 

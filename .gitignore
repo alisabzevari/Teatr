@@ -199,3 +199,4 @@ typings/
 src/aurelia/src/**/*.js
 !src/aurelia/src/config.js
 !src/aurelia/typings/
+!src/aurelia/src/lib/
