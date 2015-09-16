@@ -4,6 +4,7 @@
       "baseURL": "src"
     },
     "dependencies": {
+      "aurelia-binding": "github:aurelia/binding@^0.9.1",
       "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.16.0",
       "aurelia-framework": "github:aurelia/framework@^0.15.0",
       "aurelia-http-client": "github:aurelia/http-client@^0.11.0",

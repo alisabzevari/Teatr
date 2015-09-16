@@ -7,16 +7,17 @@
           <strong>Genres:</strong>
           <br/>
           <span repeat.for="genre of filterObj.genres">
-            <mat-chk value.bind="genre.name" checked.two-way="genre.selected"></mat-chk>
+            <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.trigger="$parent.change()"></mat-chk>
             &nbsp; &nbsp; &nbsp; &nbsp;
           </span>
+          <br/>
         </p>
       </div>
     </li>
   </ul>
 
   <div class="row">
-    <div class="col s4" repeat.for="movie of movies | filterMovie:filterObj">
+    <div class="col s4" repeat.for="movie of filteredMovies">
       <div class="card large hoverable">
         <div class="card-image">
           <!-- <img class="activator" src="http://www.bing.com/az/hprichbg/rb/NaturalBridgesStateBeach_ROW13162668940_1366x768.jpg"> -->

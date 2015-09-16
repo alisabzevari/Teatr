@@ -7,12 +7,13 @@ import * as _ from "lodash";
 @autoinject()
 export class Home {
   public movies: Movie[];
+  public filteredMovies: Movie[];
   public filterObj: FilterObject = {};
 
   constructor(private http: HttpClient) {
     this.http.get("/api/movie")
       .then(response => {
-      this.movies = response.content;
+      this.filteredMovies = this.movies = response.content;
       this.createFilterMaterials();
     });
   }
@@ -27,5 +28,10 @@ export class Home {
     _.forEach(genreNames, g => {
       this.filterObj.genres.push({ name: g, selected: true });
     });
+  }
+
+  public change() {
+    var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
+    this.filteredMovies = _.filter(this.movies, movie => _.any(movie.genre, g => _.contains(selectedGenres, g)));
   }
 }

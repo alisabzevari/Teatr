@@ -1,4 +1,4 @@
 <template>
-  <input type="checkbox" id.bind="uniqId" checked.two-way="checked" />
+  <input type="checkbox" id.bind="uniqId" checked.two-way="checked" click.delegate="click()" />
   <label for="${uniqId}">${value}</label>
 </template>
