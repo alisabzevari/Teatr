@@ -3,13 +3,13 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "Microsoft.AspNet.Mvc":  "6.0.0-beta6",
-    "Microsoft.AspNet.Diagnostics": "1.0.0-beta6-13407",
-    "Microsoft.AspNet.Server.IIS": "1.0.0-beta6-12076",
-    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6-12458",
-    "Microsoft.AspNet.StaticFiles": "1.0.0-beta6-12197",
-    "Microsoft.Framework.Configuration.Json": "1.0.0-beta6-11597",
-    "Microsoft.Net.Http.Client": "1.0.0-beta6-10093"
+    "Microsoft.AspNet.Mvc": "6.0.0-beta6",
+    "Microsoft.AspNet.Diagnostics": "1.0.0-beta6",
+    "Microsoft.AspNet.Server.IIS": "1.0.0-beta6",
+    "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-beta6",
+    "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
+    "Microsoft.Net.Http.Client": "1.0.0-beta6"
   },
 
   "commands": {
