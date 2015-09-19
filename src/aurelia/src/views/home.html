@@ -55,7 +55,7 @@
               <strong>Released: </strong> ${movie.released}</p>
           </div>
           <div class="card-action">
-            <a click.delegate="$parent.explore(movie)">Open</a>
+            <a click.delegate="$parent.explore(movie)" style="cursor: pointer">Open</a>
             <a href="http://www.imdb.com/title/${movie.imdbId}/">View in IMDB</a>
             <a href="http://subscene.com/subtitles/title?q=${movie.title}">Subtitles</a>
           </div>

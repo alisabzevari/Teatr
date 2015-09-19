@@ -7,6 +7,7 @@ using Microsoft.Framework.Configuration;
 using System.IO;
 using Teatr.OmdbClient;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Teatr.Controllers
 {
@@ -35,15 +36,18 @@ namespace Teatr.Controllers
                     if (System.IO.File.Exists(movieInfoPath))
                     {
                         var movieInfo = JsonConvert.DeserializeObject<OmdbMovie>(System.IO.File.ReadAllText(movieInfoPath));
+                        movieInfo.FolderAddress = Path.GetDirectoryName(movieInfoPath);
                         result.Add(movieInfo);
-                    }
-                    else
-                    {
-                        //lstMovies.Items.Add(CreateLstItemFrom(dir.FullName));
                     }
                 }
             }
             return Json(result);
+        }
+
+        [Route("[action]")]
+        public void Explore(string movieFolderAddress)
+        {
+            Process.Start(movieFolderAddress);
         }
     }
 }

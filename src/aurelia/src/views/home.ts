@@ -34,4 +34,8 @@ export class Home {
     var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
     this.filteredMovies = _.filter(this.movies, movie => _.any(movie.genre, g => _.contains(selectedGenres, g)));
   }
+
+  public explore(movie: Movie) {
+    this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
+  }
 }

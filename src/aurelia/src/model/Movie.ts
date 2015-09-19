@@ -17,4 +17,5 @@ export class Movie {
   runtime: string;
   type: number;
   year: number;
+  folderAddress: string;
 }
