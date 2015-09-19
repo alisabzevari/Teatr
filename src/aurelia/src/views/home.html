@@ -5,6 +5,8 @@
       <div class="collapsible-body">
         <p>
           <strong>Genres:</strong>
+          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectAllGenres()">Select All</a>
+          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectNoneGenres()">Select None</a>
           <br/>
           <span class="row">
             <span repeat.for="genre of filterObj.genres" class="col s2">
@@ -55,7 +57,7 @@
               <strong>Released: </strong> ${movie.released}</p>
           </div>
           <div class="card-action">
-            <a click.delegate="$parent.explore(movie)" style="cursor: pointer">Open</a>
+            <a click.delegate="$parent.explore(movie)" class="hand">Open</a>
             <a href="http://www.imdb.com/title/${movie.imdbId}/">View in IMDB</a>
             <a href="http://subscene.com/subtitles/title?q=${movie.title}">Subtitles</a>
           </div>

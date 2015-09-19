@@ -38,4 +38,14 @@ export class Home {
   public explore(movie: Movie) {
     this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
   }
+
+  public selectAllGenres(){
+    this.filterObj.genres.forEach(g => g.selected = true);
+    this.change();
+  }
+
+  public selectNoneGenres(){
+    this.filterObj.genres.forEach(g => g.selected = false);
+    this.change();
+  }
 }

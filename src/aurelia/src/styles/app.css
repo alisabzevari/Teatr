@@ -30,3 +30,6 @@
 .full-height {
   height: 100vh;
 }
+.hand {
+  cursor: pointer;
+}
