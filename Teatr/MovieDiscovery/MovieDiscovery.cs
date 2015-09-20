@@ -52,7 +52,19 @@ namespace Teatr.MovieDiscovery
             "[",
             "]",
             "(",
-            ")"
+            ")",
+            "ganool",
+            "1080",
+            "farsi",
+            "dubbed",
+            "tinymovies",
+            "amiable",
+            "shaanig",
+            "web-dl",
+            "5.1ch",
+            "chd3d",
+            "x264",
+            "dts"
         };
 
         private readonly OmdbClient.OmdbClient _client = new OmdbClient.OmdbClient();

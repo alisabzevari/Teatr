@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reactive.Concurrency;
-using System.Reactive.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
@@ -33,10 +28,25 @@ namespace Teatr
 
         private void Main_Load(object sender, EventArgs e)
         {
+            var movieRelatedExtensions = new[] { ".avi", ".wmv", ".mpeg", ".mp4", ".mkv", ".srt", ".sub" };
+
             foreach (var movieFolder in Program.Settings.MovieFolders)
             {
                 if (!Directory.Exists(movieFolder))
                     continue;
+                var files = new DirectoryInfo(movieFolder).GetFiles();
+                foreach (var fileInfo in files)
+                {
+                    if (movieRelatedExtensions.Contains(fileInfo.Extension))
+                    {
+                        var targetDir = Path.Combine(fileInfo.DirectoryName, fileInfo.Name.Replace(fileInfo.Extension, ""));
+                        if (!Directory.Exists(targetDir))
+                        {
+                            Directory.CreateDirectory(targetDir);
+                        }
+                        fileInfo.MoveTo(Path.Combine(targetDir, fileInfo.Name));
+                    }
+                }
                 var dirs = new DirectoryInfo(movieFolder).EnumerateDirectories();
                 foreach (var dir in dirs)
                 {
@@ -63,7 +73,7 @@ namespace Teatr
         {
             if (movieInfo == null)
             {
-                var item = new ListViewItem(new[] {"", "", "", "", path});
+                var item = new ListViewItem(new[] { "", "", "", "", path });
                 return item;
             }
             else
@@ -132,6 +142,70 @@ namespace Teatr
             if (lstMovies.SelectedItems.Count > 0)
             {
                 Process.Start(lstMovies.SelectedItems[0].SubItems[4].Text);
+            }
+        }
+
+        private void mnuCopy_Click(object sender, EventArgs e)
+        {
+            Shell32.Shell shell = new Shell32.Shell();
+            if (dlgFolders.ShowDialog() == DialogResult.OK)
+            {
+                foreach (ListViewItem selectedItem in lstMovies.SelectedItems)
+                {
+                    var source = shell.NameSpace(selectedItem.SubItems[4].Text);
+                    var destination = shell.NameSpace(dlgFolders.SelectedPath);
+                    destination.CopyHere(source, 0);
+
+                    //    var targetDir = Path.Combine(dlgFolders.SelectedPath, Path.GetFileName(selectedItem.SubItems[4].Text));
+                    //DirectoryCopy(selectedItem.SubItems[4].Text, targetDir, true);
+                }
+            }
+        }
+
+        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // If the source directory does not exist, throw an exception.
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            // If the destination directory does not exist, create it.
+            if (!Directory.Exists(destDirName))
+            {
+                Directory.CreateDirectory(destDirName);
+            }
+
+
+            // Get the file contents of the directory to copy.
+            FileInfo[] files = dir.GetFiles();
+
+            foreach (FileInfo file in files)
+            {
+                // Create the path to the new copy of the file.
+                string temppath = Path.Combine(destDirName, file.Name);
+
+                // Copy the file.
+                file.CopyTo(temppath, false);
+            }
+
+            // If copySubDirs is true, copy the subdirectories.
+            if (copySubDirs)
+            {
+
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    // Create the subdirectory.
+                    string temppath = Path.Combine(destDirName, subdir.Name);
+
+                    // Copy the subdirectories.
+                    DirectoryCopy(subdir.FullName, temppath, copySubDirs);
+                }
             }
         }
     }

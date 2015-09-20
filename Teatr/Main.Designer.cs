@@ -35,6 +35,8 @@
             this.colRank = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colGenre = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.mnuListItems = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,15 +47,14 @@
             this.status = new System.Windows.Forms.ToolStripStatusLabel();
             this.progress = new System.Windows.Forms.ToolStripProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.mnuListItems = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openInExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopy = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuListItems.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.mnuListItems.SuspendLayout();
             this.SuspendLayout();
             // 
             // lstMovies
@@ -101,8 +102,23 @@
             this.colPath.Text = "Path";
             this.colPath.Width = 350;
             // 
+            // mnuListItems
+            // 
+            this.mnuListItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openInExplorerToolStripMenuItem});
+            this.mnuListItems.Name = "mnuListItems";
+            this.mnuListItems.Size = new System.Drawing.Size(162, 26);
+            // 
+            // openInExplorerToolStripMenuItem
+            // 
+            this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
+            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.openInExplorerToolStripMenuItem.Text = "Open in Explorer";
+            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
+            // 
             // propertyGrid
             // 
+            this.propertyGrid.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGrid.Location = new System.Drawing.Point(0, 0);
             this.propertyGrid.Name = "propertyGrid";
@@ -123,7 +139,8 @@
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAddFolder,
-            this.mnuDiscover});
+            this.mnuDiscover,
+            this.mnuCopy});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -131,13 +148,13 @@
             // mnuAddFolder
             // 
             this.mnuAddFolder.Name = "mnuAddFolder";
-            this.mnuAddFolder.Size = new System.Drawing.Size(132, 22);
+            this.mnuAddFolder.Size = new System.Drawing.Size(152, 22);
             this.mnuAddFolder.Text = "Add Folder";
             // 
             // mnuDiscover
             // 
             this.mnuDiscover.Name = "mnuDiscover";
-            this.mnuDiscover.Size = new System.Drawing.Size(132, 22);
+            this.mnuDiscover.Size = new System.Drawing.Size(152, 22);
             this.mnuDiscover.Text = "Discover";
             this.mnuDiscover.Click += new System.EventHandler(this.mnuDiscover_Click);
             // 
@@ -182,19 +199,12 @@
             this.splitContainer1.SplitterDistance = 654;
             this.splitContainer1.TabIndex = 3;
             // 
-            // mnuListItems
+            // mnuCopy
             // 
-            this.mnuListItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openInExplorerToolStripMenuItem});
-            this.mnuListItems.Name = "mnuListItems";
-            this.mnuListItems.Size = new System.Drawing.Size(162, 48);
-            // 
-            // openInExplorerToolStripMenuItem
-            // 
-            this.openInExplorerToolStripMenuItem.Name = "openInExplorerToolStripMenuItem";
-            this.openInExplorerToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.openInExplorerToolStripMenuItem.Text = "Open in Explorer";
-            this.openInExplorerToolStripMenuItem.Click += new System.EventHandler(this.openInExplorerToolStripMenuItem_Click);
+            this.mnuCopy.Name = "mnuCopy";
+            this.mnuCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuCopy.Text = "Copy To...";
+            this.mnuCopy.Click += new System.EventHandler(this.mnuCopy_Click);
             // 
             // Main
             // 
@@ -208,6 +218,7 @@
             this.Name = "Main";
             this.Text = "Teatr";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.mnuListItems.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -216,7 +227,6 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.mnuListItems.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +252,6 @@
         private System.Windows.Forms.ColumnHeader colRank;
         private System.Windows.Forms.ContextMenuStrip mnuListItems;
         private System.Windows.Forms.ToolStripMenuItem openInExplorerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopy;
     }
 }
