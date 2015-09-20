@@ -1,0 +1,29 @@
+{
+  "jspm": {
+    "directories": {
+      "baseURL": "src"
+    },
+    "dependencies": {
+      "aurelia-binding": "github:aurelia/binding@^0.9.1",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.16.0",
+      "aurelia-framework": "github:aurelia/framework@^0.15.0",
+      "aurelia-http-client": "github:aurelia/http-client@^0.11.0",
+      "hammerjs": "npm:hammerjs@^2.0.4",
+      "jquery": "github:components/jquery@^2.1.4",
+      "lodash": "npm:lodash@^3.10.1",
+      "material-design-lite": "github:google/material-design-lite@^1.0.4",
+      "materialize-css": "npm:materialize-css@^0.96.1",
+      "pickadate": "npm:pickadate@^3.5.6"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.0-dev.20150818"
+    }
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "gulp-serve": "^1.0.0",
+    "gulp": "^3.9.0",
+    "tsd": "^0.6.3",
+    "typescript": "^1.5.3"
+  }
+}

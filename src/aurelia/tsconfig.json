@@ -1,0 +1,32 @@
+{
+    "version": "1.5.3",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noLib": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts",
+        "!./src/jspm_packages/**/*.d.ts",
+        "!./typings/**/*.d.ts",
+        "./typings/tsd.d.ts"
+    ],
+    "files": [
+        "./src/app.ts",
+        "./src/main.ts",
+        "./src/model/FilterObject.ts",
+        "./src/model/Movie.ts",
+        "./src/resources/index.ts",
+        "./src/resources/mat-chk.ts",
+        "./src/resources/materialize.ts",
+        "./src/views/home.ts",
+        "./src/views/settings.ts",
+        "./typings/tsd.d.ts"
+    ]
+}

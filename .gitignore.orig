@@ -187,6 +187,9 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 
+<<<<<<< HEAD
+.vs/
+=======
 # vs 2015
 .vs/
 
@@ -200,3 +203,4 @@ src/aurelia/src/**/*.js
 !src/aurelia/src/config.js
 !src/aurelia/typings/
 !src/aurelia/src/lib/
+>>>>>>> 2dd7ff8226c2c8649c5e2300ed384e85bde5f812

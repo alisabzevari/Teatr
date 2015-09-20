@@ -34,7 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+<<<<<<< HEAD:Teatr/Teatr.csproj
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+=======
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+>>>>>>> 2dd7ff8226c2c8649c5e2300ed384e85bde5f812:src/Winforms/Teatr/Teatr.csproj
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -70,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+<<<<<<< HEAD:Teatr/Teatr.csproj
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Shell32">
@@ -81,6 +86,11 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+=======
+    <None Include="settings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+>>>>>>> 2dd7ff8226c2c8649c5e2300ed384e85bde5f812:src/Winforms/Teatr/Teatr.csproj
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
