@@ -24,7 +24,7 @@ namespace Teatr.OmdbClient
         public int ImdbVotes { get; set; }
         public string ImdbId { get; set; }
         public OmdbMovieType Type { get; set; }
-        public string FolderAddress {get; set;}
+        public string FolderAddress { get; set; }
 
         public override string ToString()
         {

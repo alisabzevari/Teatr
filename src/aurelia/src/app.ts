@@ -8,7 +8,8 @@ export class App {
       config.title = "Teatr";
       config.map([
         { route: ["", "home"], name: "home", moduleId: "views/home", nav: true, title: "Home" },
-        { route: "settings", name: "settings", moduleId: "views/settings", nav: true, title: "Settings" }
+        { route: "settings", name: "settings", moduleId: "views/settings", nav: true, title: "Settings" },
+        { route: "manage", name: "manage", moduleId: "views/manage", nav: true, title: "Manage" }
       ]);
       return config;
     });
