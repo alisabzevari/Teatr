@@ -28,6 +28,7 @@
     "devDependencies": {}
   },
   "devDependencies": {
+    "electron-prebuilt": "^0.33.3",
     "jspm": "^0.16.11"
   }
 }
