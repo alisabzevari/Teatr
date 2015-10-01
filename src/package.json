@@ -22,6 +22,7 @@
       "aurelia-framework": "github:aurelia/framework@^0.16.0",
       "aurelia-http-client": "github:aurelia/http-client@^0.11.0",
       "lodash": "npm:lodash@^3.10.1",
+      "materialize": "github:Dogfalo/materialize@0.97.0",
       "typescript": "npm:typescript@^1.6.2"
     },
     "devDependencies": {}

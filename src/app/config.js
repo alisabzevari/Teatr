@@ -15,12 +15,10 @@ System.config({
     "hammerjs": "npm:hammerjs@2.0.4",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",
-    "material-design-lite": "github:google/material-design-lite@1.0.5",
-    "materialize": "github:Dogfalo/materialize@0.96.1",
-    "materialize-css": "npm:materialize-css@0.96.1",
+    "materialize": "github:Dogfalo/materialize@0.97.0",
     "pickadate": "npm:pickadate@3.5.6",
     "typescript": "npm:typescript@1.6.2",
-    "github:Dogfalo/materialize@0.96.1": {
+    "github:Dogfalo/materialize@0.97.0": {
       "css": "github:systemjs/plugin-css@0.1.18",
       "jquery": "github:components/jquery@2.1.4"
     },
@@ -148,9 +146,6 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.1"
-    },
-    "npm:materialize-css@0.96.1": {
       "process": "github:jspm/nodelibs-process@0.1.1"
     },
     "npm:pickadate@3.5.6": {
