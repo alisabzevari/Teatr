@@ -1,5 +1,6 @@
 # Teatr
 This is an Electron application that manages my movies in my hard disks. It has these features:
+
 1. Reads movie folders and finds movie information from imdb.
 2. Helps user to filter and search in his/her movies.
 
