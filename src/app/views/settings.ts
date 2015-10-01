@@ -1,14 +1,8 @@
-export class Settings {
-  public settings: SettingItem[];
-  constructor() {
-    this.settings = [
-      { active: true, path: "c:\\" },
-      { active: false, path: "d:\\Movies" }
-    ];
-  }
-}
+import {SettingsProvider} from "../Backend/SettingsProvider";
+import {autoinject} from "aurelia-framework";
 
-export interface SettingItem {
-  active: boolean;
-  path: string;
+@autoinject()
+export class Settings {
+  constructor(public settings: SettingsProvider) {
+  }
 }

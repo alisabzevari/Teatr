@@ -1,7 +1,7 @@
-import {HttpClient} from "aurelia-http-client";
 import {autoinject} from "aurelia-framework";
 import {Movie} from "../model/Movie";
 import {FilterObject} from "../model/FilterObject";
+import {Movies} from "../Backend/Movies";
 import * as _ from "lodash";
 
 @autoinject()
@@ -10,12 +10,12 @@ export class Home {
   public filteredMovies: Movie[];
   public filterObj: FilterObject = {};
 
-  constructor(private http: HttpClient) {
-    this.http.get("/api/movie")
-      .then(response => {
-      this.filteredMovies = this.movies = response.content;
-      this.createFilterMaterials();
-    });
+  constructor(private moviesManager: Movies) {
+    // this.movies.getAll()
+    //   .then(movies => {
+    //   this.filteredMovies = this.movies = movies;
+    //   this.createFilterMaterials();
+    // });
   }
 
   public createFilterMaterials() {
@@ -36,7 +36,7 @@ export class Home {
   }
 
   public explore(movie: Movie) {
-    this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
+    // this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
   }
 
   public selectAllGenres(){

@@ -16,20 +16,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", "aurelia-http-client", "aurelia-framework", "lodash"], function (require, exports) {
-    var aurelia_http_client_1 = require("aurelia-http-client");
+})(["require", "exports", "aurelia-framework", "../Backend/Movies", "lodash"], function (require, exports) {
     var aurelia_framework_1 = require("aurelia-framework");
+    var Movies_1 = require("../Backend/Movies");
     var _ = require("lodash");
     var Home = (function () {
-        function Home(http) {
-            var _this = this;
-            this.http = http;
+        function Home(moviesManager) {
+            this.moviesManager = moviesManager;
             this.filterObj = {};
-            this.http.get("/api/movie")
-                .then(function (response) {
-                _this.filteredMovies = _this.movies = response.content;
-                _this.createFilterMaterials();
-            });
+            // this.movies.getAll()
+            //   .then(movies => {
+            //   this.filteredMovies = this.movies = movies;
+            //   this.createFilterMaterials();
+            // });
         }
         Home.prototype.createFilterMaterials = function () {
             var _this = this;
@@ -48,7 +47,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.filteredMovies = _.filter(this.movies, function (movie) { return _.any(movie.genre, function (g) { return _.contains(selectedGenres, g); }); });
         };
         Home.prototype.explore = function (movie) {
-            this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
+            // this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
         };
         Home.prototype.selectAllGenres = function () {
             this.filterObj.genres.forEach(function (g) { return g.selected = true; });
@@ -60,7 +59,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         };
         Home = __decorate([
             aurelia_framework_1.autoinject(), 
-            __metadata('design:paramtypes', [aurelia_http_client_1.HttpClient])
+            __metadata('design:paramtypes', [Movies_1.Movies])
         ], Home);
         return Home;
     })();

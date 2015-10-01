@@ -18,6 +18,8 @@
         "./typings/tsd.d.ts"
     ],
     "files": [
+        "./app/Backend/Movies.ts",
+        "./app/Backend/SettingsProvider.ts",
         "./app/app.ts",
         "./app/main.ts",
         "./app/model/FilterObject.ts",
