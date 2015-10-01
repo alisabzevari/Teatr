@@ -16,9 +16,14 @@ System.config({
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",
     "material-design-lite": "github:google/material-design-lite@1.0.5",
+    "materialize": "github:Dogfalo/materialize@0.96.1",
     "materialize-css": "npm:materialize-css@0.96.1",
     "pickadate": "npm:pickadate@3.5.6",
     "typescript": "npm:typescript@1.6.2",
+    "github:Dogfalo/materialize@0.96.1": {
+      "css": "github:systemjs/plugin-css@0.1.18",
+      "jquery": "github:components/jquery@2.1.4"
+    },
     "github:aurelia/binding@0.9.1": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.10.1",
       "aurelia-metadata": "github:aurelia/metadata@0.8.0",

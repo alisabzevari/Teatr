@@ -16,7 +16,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     else if (typeof define === 'function' && define.amd) {
         define(deps, factory);
     }
-})(["require", "exports", "aurelia-framework", "aurelia-router"], function (require, exports) {
+})(["require", "exports", "materialize", "aurelia-framework", "aurelia-router"], function (require, exports) {
+    require("materialize");
     var aurelia_framework_1 = require("aurelia-framework");
     var aurelia_router_1 = require("aurelia-router");
     var App = (function () {

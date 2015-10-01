@@ -18,6 +18,7 @@
         "./typings/tsd.d.ts"
     ],
     "files": [
+        "./app/Backend/ModuleLoader.ts",
         "./app/Backend/Movies.ts",
         "./app/Backend/SettingsProvider.ts",
         "./app/app.ts",
