@@ -1,0 +1,34 @@
+{
+    "version": "1.6.2",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "umd",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noLib": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts",
+        "!./app/jspm_packages/**/*.d.ts",
+        "!./typings/**/*.d.ts",
+        "./typings/tsd.d.ts"
+    ],
+    "files": [
+        "./app/app.ts",
+        "./app/main.ts",
+        "./app/model/FilterObject.ts",
+        "./app/model/Movie.ts",
+        "./app/resources/index.ts",
+        "./app/resources/mat-chk.ts",
+        "./app/resources/materialize.ts",
+        "./app/views/home.ts",
+        "./app/views/manage.ts",
+        "./app/views/settings.ts",
+        "./teatr-main.ts",
+        "./typings/tsd.d.ts"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "teatr",
+  "version": "0.2.0",
+  "description": "",
+  "main": "teatr-main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/alisabzevari/teatr"
+  },
+  "author": "Ali Sabzevari",
+  "license": "MIT",
+  "jspm": {
+    "directories": {
+      "baseURL": "app"
+    },
+    "dependencies": {
+      "aurelia-binding": "github:aurelia/binding@^0.9.1",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.17.0",
+      "aurelia-framework": "github:aurelia/framework@^0.16.0",
+      "aurelia-http-client": "github:aurelia/http-client@^0.11.0",
+      "hammerjs": "npm:hammerjs@^2.0.4",
+      "jquery": "github:components/jquery@^2.1.4",
+      "lodash": "npm:lodash@^3.10.1",
+      "material-design-lite": "github:google/material-design-lite@^1.0.4",
+      "materialize-css": "npm:materialize-css@^0.96.1",
+      "pickadate": "npm:pickadate@^3.5.6",
+      "typescript": "npm:typescript@^1.6.2"
+    },
+    "devDependencies": {}
+  },
+  "devDependencies": {
+    "jspm": "^0.16.11"
+  }
+}

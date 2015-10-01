@@ -1,0 +1,68 @@
+<template>
+  <ul materialize="" class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Discover Movies</div>
+      <div class="collapsible-body">
+        <p>
+          <strong>Genres:</strong>
+          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectAllGenres()">Select All</a>
+          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectNoneGenres()">Select None</a>
+          <br/>
+          <span class="row">
+            <span repeat.for="genre of filterObj.genres" class="col s2">
+              <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.trigger="$parent.change()"></mat-chk>
+            </span>
+          </span>
+          <br/>
+        </p>
+      </div>
+    </li>
+  </ul>
+
+  <div class="row">
+    <div class="col s4" repeat.for="movie of filteredMovies">
+      <div class="card large hoverable">
+        <div class="card-image">
+          <!-- <img class="activator" src="http://www.bing.com/az/hprichbg/rb/NaturalBridgesStateBeach_ROW13162668940_1366x768.jpg"> -->
+          <img materialize="" class="materialboxed" width="800" src.bind="movie.poster" src="http://materializecss.com/images/sample-1.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">${movie.title}<i class="material-icons right">more_vert</i></span>
+          <p>
+            <h5>${movie.imdbRating}</h5>
+          </p>
+          <p>${movie.genre.join(', ')}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">${movie.title}<i class="material-icons right">close</i></span>
+          <p>
+            <h5>${movie.imdbRating}</h5>
+          </p>
+          <div style="height: 320px; overflow-y:scroll;">
+            <p>${movie.genre.join(', ')}</p>
+            <p>${movie.year}</p>
+            <p>
+              <strong>Director: </strong> ${movie.director}</p>
+            <p>
+              <strong>Actors: </strong> ${movie.actors.join(', ')}</p>
+            <p>
+              <strong>Country: </strong> ${movie.country}</p>
+            <p>
+              <strong>Language: </strong> ${movie.language}</p>
+            <p>
+              <strong>Plot: </strong> ${movie.plot}</p>
+            <p>
+              <strong>Runtime: </strong> ${movie.runtime}</p>
+            <p>
+              <strong>Released: </strong> ${movie.released}</p>
+          </div>
+          <div class="card-action">
+            <a click.delegate="$parent.explore(movie)" class="hand">Open</a>
+            <a href="http://www.imdb.com/title/${movie.imdbId}/">View in IMDB</a>
+            <a href="http://subscene.com/subtitles/title?q=${movie.title}">Subtitles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
