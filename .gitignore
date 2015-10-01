@@ -193,10 +193,12 @@ ModelManifest.xml
 # Client Side Items
 node_modules/
 jspm_packages/
-typings/
 
 # Aurelia Items
-src/aurelia/src/**/*.js
-!src/aurelia/src/config.js
-!src/aurelia/typings/
-!src/aurelia/src/lib/
+src/app/**/*.js
+!src/app/config.js
+!typings/
+!src/app/lib/
+
+# Electron Items
+*.js

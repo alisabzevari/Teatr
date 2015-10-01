@@ -14,7 +14,7 @@ app.on("window-all-closed", () => {
 });
 
 app.on("ready", () => {
-  mainWindow = new BrowserWindow({ width: 800, height: 600 });
+  mainWindow = new BrowserWindow({ fullscreen: true });
   mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
 
   // Open the DevTools.
