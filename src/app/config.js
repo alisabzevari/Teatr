@@ -12,6 +12,7 @@ System.config({
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
     "aurelia-framework": "github:aurelia/framework@0.16.0",
     "aurelia-http-client": "github:aurelia/http-client@0.11.0",
+    "fs": "github:jspm/nodelibs-fs@0.1.2",
     "hammerjs": "npm:hammerjs@2.0.4",
     "jquery": "github:components/jquery@2.1.4",
     "lodash": "npm:lodash@3.10.1",
