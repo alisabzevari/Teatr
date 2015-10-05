@@ -22,13 +22,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     var _ = require("lodash");
     var Home = (function () {
         function Home(moviesManager) {
+            var _this = this;
             this.moviesManager = moviesManager;
             this.filterObj = {};
-            // this.movies.getAll()
-            //   .then(movies => {
-            //   this.filteredMovies = this.movies = movies;
-            //   this.createFilterMaterials();
-            // });
+            this.moviesManager.getAll()
+                .then(function (movies) {
+                _this.filteredMovies = _this.movies = movies;
+                _this.createFilterMaterials();
+            });
         }
         Home.prototype.createFilterMaterials = function () {
             var _this = this;

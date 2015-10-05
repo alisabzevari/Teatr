@@ -1,5 +1,3 @@
-// import {loadNodeModule} from "./ModuleLoader";
-// var fs = loadNodeModule("fs");
 import fs = require("fs");
 
 export class SettingsProvider {

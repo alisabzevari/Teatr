@@ -11,11 +11,11 @@ export class Home {
   public filterObj: FilterObject = {};
 
   constructor(private moviesManager: Movies) {
-    // this.movies.getAll()
-    //   .then(movies => {
-    //   this.filteredMovies = this.movies = movies;
-    //   this.createFilterMaterials();
-    // });
+    this.moviesManager.getAll()
+      .then(movies => {
+        this.filteredMovies = this.movies = movies;
+        this.createFilterMaterials();
+    });
   }
 
   public createFilterMaterials() {
@@ -39,12 +39,12 @@ export class Home {
     // this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
   }
 
-  public selectAllGenres(){
+  public selectAllGenres() {
     this.filterObj.genres.forEach(g => g.selected = true);
     this.change();
   }
 
-  public selectNoneGenres(){
+  public selectNoneGenres() {
     this.filterObj.genres.forEach(g => g.selected = false);
     this.change();
   }
