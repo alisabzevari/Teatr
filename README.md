@@ -23,4 +23,5 @@ npm install -g electron-prebuilt
 npm install -g jspm
 npm install
 jspm install
+electron .
 ```
