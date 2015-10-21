@@ -1,6 +1,6 @@
 import fs = require("fs");
 import path = require("path");
-import {Movie} from "../model/Movie";
+import {Movie} from "./Movie";
 import http = require("http");
 
 export class MovieDiscovery {

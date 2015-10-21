@@ -1,4 +1,4 @@
-import {SettingsProvider} from "../Backend/SettingsProvider";
+import {SettingsProvider} from "../../Core/SettingsProvider";
 import {autoinject} from "aurelia-framework";
 
 @autoinject()

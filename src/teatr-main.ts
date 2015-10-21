@@ -5,7 +5,7 @@ var crashReporter: GitHubElectron.CrashReporter = require("crash-reporter");
 
 crashReporter.start();
 
-var mainWindow = null;
+var mainWindow: GitHubElectron.BrowserWindow = null;
 
 app.on("window-all-closed", () => {
   if (process.platform != "darwin") {
@@ -15,8 +15,9 @@ app.on("window-all-closed", () => {
 
 app.on("ready", () => {
   mainWindow = new BrowserWindow({ width: 1300, height: 700 });
-  mainWindow.loadUrl('file://' + __dirname + '/app/index.html');
-
+  mainWindow.loadUrl('file://' + __dirname + '/web/index.html');
+  
+  mainWindow.maximize();
   // Open the DevTools.
   mainWindow.openDevTools();
 

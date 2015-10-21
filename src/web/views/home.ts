@@ -1,7 +1,7 @@
 import {autoinject} from "aurelia-framework";
-import {Movie} from "../model/Movie";
+import {Movie} from "../../Core/Movie";
 import {FilterObject} from "../model/FilterObject";
-import {Movies} from "../Backend/Movies";
+import {Movies} from "../../Core/Movies";
 import * as _ from "lodash";
 
 @autoinject()
