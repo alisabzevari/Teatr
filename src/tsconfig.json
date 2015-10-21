@@ -32,6 +32,8 @@
         "./web/views/manage.ts",
         "./web/views/settings.ts",
         "./teatr-main.ts",
+        "./tests/SettingsProvider-tests.ts",
+        "./tests/MovieDiscovery-tests.ts",
         "./typings/tsd.d.ts"
     ]
 }

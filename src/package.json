@@ -32,7 +32,9 @@
     "devDependencies": {}
   },
   "devDependencies": {
+    "chai": "^3.4.0",
     "electron-prebuilt": "^0.33.3",
-    "jspm": "^0.16.11"
+    "jspm": "^0.16.11",
+    "mocha": "^2.3.3"
   }
 }
