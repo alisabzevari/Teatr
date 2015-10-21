@@ -10,5 +10,7 @@ var expect = chai.expect;
 // });
 
 let discovery = new MovieDiscovery();
-discovery.discoverMovie("blade runner")
-	.then(movie => console.log(movie));
+// discovery.discoverMovie("blade runner")
+// 	.then(movie => console.log(movie));
+discovery.discoverMoviesInDirectory("D:\\Home\\Videos")
+	.then(() => console.log("finished"));

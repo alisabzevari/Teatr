@@ -9,16 +9,22 @@ export class MovieDiscovery {
     "x264", "_", "noscr", "jns", ".", "[", "]", "(", ")", "ganool", "1080", "farsi", "dubbed", "tinymovies", "amiable", "shaanig",
     "web-dl", "5.1ch", "chd3d", "x264", "dts"];
 
-  public discoverMoviesInDirectory(dir: string) {
-    let folders = fs.readdirSync(dir).map(p => path.join(dir, p));
-    folders.forEach(folder => {
-      let movieInfoPath = path.join(folder, "MovieInfo.json");
-      if (fs.existsSync(movieInfoPath)) {
-        let movieInfo = this.discoverMovie(folder);
-        if (movieInfo) {
-          fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
+  public discoverMoviesInDirectory(dir: string): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      let folders = fs.readdirSync(dir).map(p => path.join(dir, p)).filter(p => fs.lstatSync(p).isDirectory());
+      folders.forEach(folder => {
+        let movieInfoPath = path.join(folder, "MovieInfo.json");
+        if (!fs.existsSync(movieInfoPath)) {
+          this.discoverMovie(folder)
+            .then(movieInfo => {
+              if (movieInfo) {
+                console.log(movieInfo);
+                fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
+              }
+            });
         }
-      }
+      });
+      resolve();
     });
   }
 
