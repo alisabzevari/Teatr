@@ -15,6 +15,7 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+*.js.map
 
 # Roslyn cache directories
 *.ide/

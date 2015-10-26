@@ -2,6 +2,7 @@ import fs = require("fs");
 import path = require("path");
 import {Movie} from "./Movie";
 import http = require("http");
+import * as _ from "lodash";
 
 export class MovieDiscovery {
   private _replacables = ["scoop", "webdl", "brrip", "mkv", "yify", "paroos", "blueray", "720p", "dvdrip", "fxg", "eng", "far",
@@ -9,16 +10,16 @@ export class MovieDiscovery {
     "x264", "_", "noscr", "jns", ".", "[", "]", "(", ")", "ganool", "1080", "farsi", "dubbed", "tinymovies", "amiable", "shaanig",
     "web-dl", "5.1ch", "chd3d", "x264", "dts"];
 
+// TODO: fix resolve here. the funtion does not properly resolves. It could be better to resolve with list of discovered movies 
   public discoverMoviesInDirectory(dir: string): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       let folders = fs.readdirSync(dir).map(p => path.join(dir, p)).filter(p => fs.lstatSync(p).isDirectory());
       folders.forEach(folder => {
         let movieInfoPath = path.join(folder, "MovieInfo.json");
         if (!fs.existsSync(movieInfoPath)) {
-          this.discoverMovie(folder)
+          this.discoverMovie(path.basename(folder))
             .then(movieInfo => {
               if (movieInfo) {
-                console.log(movieInfo);
                 fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
               }
             });
@@ -30,7 +31,12 @@ export class MovieDiscovery {
 
   public discoverMovie(query: string): Promise<Movie> {
     return this.getImDbId(this.cleanTitle(query))
-      .then(id => this.getMovieDetails(id));
+      .then(id => {
+        if (id)
+          return this.getMovieDetails(id);
+        else
+          return null;
+      });
   }
 
   private cleanTitle(dirtyTitle: string): string {
@@ -61,10 +67,35 @@ export class MovieDiscovery {
       http.get(this.baseUrl + "i=" + imdbId, response => {
         let body = "";
         response.on("data", d => body += d);
-        response.on("end", () => resolve(JSON.parse(body)))
-      }).on("error", e => reject(e));;
+        response.on("end", () => resolve(this.prepare(JSON.parse(body))));
+      }).on("error", e => reject(e));
 
     });
+  }
+
+  private prepare(movie: any): Movie{
+    return this.fixArrays(this.toCamelCase(movie));
+  }
+  
+  private fixArrays(movie: any): Movie{
+    let result = _.clone(movie);
+    result.actors = result.actors.split(",").map(s => s.trim());
+    result.genre = result.genre.split(",").map(s => s.trim());
+    return result;
+  }
+
+  private toCamelCase(obj: any): any {
+    let result = {};
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        result[this.firstToLower(key)] = obj[key];
+      }
+    }
+    return result;
+  }
+
+  private firstToLower(str: string): string {
+    return str.charAt(0).toLowerCase() + str.slice(1);
   }
 
 }

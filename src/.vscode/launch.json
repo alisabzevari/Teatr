@@ -4,11 +4,11 @@
 	"configurations": [
 		{
 			// Name of configuration; appears in the launch configuration drop down menu.
-			"name": "Launch teatr-main.js",
+			"name": "Launch app.js",
 			// Type of configuration.
 			"type": "node",
 			// Workspace relative or absolute path to the program.
-			"program": "tests/MovieDiscovery-tests.js",
+			"program": "tests/MovieDiscovery-tests.ts",
 			// Automatically stop program after launch.
 			"stopOnEntry": false,
 			// Command line arguments passed to the program.
@@ -24,9 +24,9 @@
 				"NODE_ENV": "development"
 			},
 			// Use JavaScript source maps (if they exist).
-			"sourceMaps": false,
+			"sourceMaps": true,
 			// If JavaScript source maps are enabled, the generated code is expected in this directory.
-			"outDir": null
+			"outDir": "tests"
 		},
 		{
 			"name": "Attach",

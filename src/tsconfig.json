@@ -8,7 +8,8 @@
         "removeComments": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "noLib": true
+        "noLib": true,
+        "sourceMap": true
     },
     "filesGlob": [
         "./**/*.ts",
@@ -34,6 +35,7 @@
         "./teatr-main.ts",
         "./tests/SettingsProvider-tests.ts",
         "./tests/MovieDiscovery-tests.ts",
+        "./tests/Movies-tests.ts",
         "./typings/tsd.d.ts"
     ]
 }

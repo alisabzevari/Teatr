@@ -18,15 +18,11 @@ export class Movies {
       .forEach(folder => {
         let promise = new Promise((resolve, reject) => {
           let movieInfo = this.getMovieInfo(folder);
-          if (movieInfo)
-            resolve(movieInfo);
-          else { 
-            return movieDiscovery.discoverMovie(path.dirname(folder));
-          }
+          resolve(movieInfo);
         });
         promises.push(promise);
       });
-    return Promise.all(promises);
+    return Promise.all(promises).then(result => result.filter(r => r));
   }
 
   private getMovieInfo(address: string): Movie {
