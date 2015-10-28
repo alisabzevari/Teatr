@@ -12,5 +12,5 @@ var expect = chai.expect;
 let discovery = new MovieDiscovery();
 // discovery.discoverMovie("blade runner")
 // 	.then(movie => console.log(movie));
-discovery.discoverMoviesInDirectory("D:\\Home\\Videos")
+discovery.discoverMoviesInDirectory("F:\\Movies 4")
 	.then(() => console.log("finished"));

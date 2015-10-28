@@ -20,7 +20,7 @@
   </ul>
 
   <div class="row">
-    <div class="col s4" repeat.for="movie of filteredMovies">
+    <div class="col s12 m6 l4" repeat.for="movie of filteredMovies">
       <div class="card large hoverable">
         <div class="card-image">
           <!-- <img class="activator" src="http://www.bing.com/az/hprichbg/rb/NaturalBridgesStateBeach_ROW13162668940_1366x768.jpg"> -->
@@ -58,8 +58,8 @@
           </div>
           <div class="card-action">
             <a click.delegate="$parent.explore(movie)" class="hand">Open</a>
-            <a href="http://www.imdb.com/title/${movie.imdbId}/">View in IMDB</a>
-            <a href="http://subscene.com/subtitles/title?q=${movie.title}">Subtitles</a>
+            <a click.delegate="$parent.openInImdb(movie)" class="hand">View in IMDB</a>
+            <a click.delegate="$parent.openSubtitles(movie)" class="hand">Subtitles</a>
           </div>
         </div>
       </div>

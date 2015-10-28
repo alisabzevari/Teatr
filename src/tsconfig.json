@@ -23,6 +23,7 @@
         "./Core/Movies.ts",
         "./Core/SettingsProvider.ts",
         "./Core/Movie.ts",
+        "./Core/Electron.ts",
         "./web/app.ts",
         "./web/main.ts",
         "./web/model/FilterObject.ts",

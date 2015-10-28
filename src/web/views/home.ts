@@ -15,7 +15,7 @@ export class Home {
       .then(movies => {
         this.filteredMovies = this.movies = movies;
         this.createFilterMaterials();
-    });
+      });
   }
 
   public createFilterMaterials() {
@@ -36,7 +36,15 @@ export class Home {
   }
 
   public explore(movie: Movie) {
-    // this.http.get("/api/movie/Explore?movieFolderAddress=" + movie.folderAddress);
+    this.moviesManager.explore(movie);
+  }
+
+  public openInImdb(movie: Movie) {
+    this.moviesManager.openInImdb(movie);
+  }
+
+  public openSubtitles(movie: Movie) {
+    this.moviesManager.openSubtitles(movie);
   }
 
   public selectAllGenres() {
@@ -48,4 +56,5 @@ export class Home {
     this.filterObj.genres.forEach(g => g.selected = false);
     this.change();
   }
+
 }

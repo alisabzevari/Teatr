@@ -21,6 +21,7 @@ export class MovieDiscovery {
             .then(movieInfo => {
               if (movieInfo) {
                 fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
+                console.log(`Finished discovering ${movieInfo.title}`);
               }
             });
         }

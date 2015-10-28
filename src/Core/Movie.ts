@@ -9,7 +9,7 @@ export class Movie {
   poster: string;
   imdbRating: number;
   imdbVotes: number;
-  imdbId: string;
+  imdbID: string;
   language: string;
   metascore: string;
   rated: string;
