@@ -1,5 +1,5 @@
-import app = require("app");
-import BrowserWindow = require('browser-window');
+import * as app from "app";
+import * as BrowserWindow from 'browser-window';
 
 var crashReporter: GitHubElectron.CrashReporter = require("crash-reporter");
 

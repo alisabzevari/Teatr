@@ -17,7 +17,7 @@ export class MovieDiscovery {
       folders.forEach(folder => {
         let movieInfoPath = path.join(folder, "MovieInfo.json");
         if (!fs.existsSync(movieInfoPath)) {
-          this.discoverMovie(path.basename(folder))
+          this.getMovieInfo(path.basename(folder))
             .then(movieInfo => {
               if (movieInfo) {
                 fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
@@ -30,19 +30,24 @@ export class MovieDiscovery {
     });
   }
 
-  public discoverMovie(query: string): Promise<Movie> {
+  public getMovieInfo(query: string): Promise<Movie> {
     return this.getImDbId(this.cleanTitle(query))
       .then(id => {
         if (id)
-          return this.getMovieDetails(id);
+          return this.getMovieInfoById(id);
         else
           return null;
       });
   }
 
-  private cleanTitle(dirtyTitle: string): string {
-    let dt = dirtyTitle.toLowerCase();
-    return this._replacables.reduce((prev, curr) => prev.split(curr).join(""), dt);
+  public getMovieInfoById(imdbId: string): Promise<Movie> {
+    return new Promise((resolve, reject) => {
+      http.get(`http://www.omdbapi.com/?i=${imdbId}`, response => {
+        let body = "";
+        response.on("data", d => body += d);
+        response.on("end", () => resolve(this.prepare(JSON.parse(body))));
+      }).on("error", e => reject(e));
+    });
   }
 
   private getImDbId(movieName: string): Promise<string> {
@@ -61,17 +66,9 @@ export class MovieDiscovery {
     });
   }
 
-  private baseUrl = "http://www.omdbapi.com/?";
-
-  public getMovieDetails(imdbId: string): Promise<Movie> {
-    return new Promise((resolve, reject) => {
-      http.get(this.baseUrl + "i=" + imdbId, response => {
-        let body = "";
-        response.on("data", d => body += d);
-        response.on("end", () => resolve(this.prepare(JSON.parse(body))));
-      }).on("error", e => reject(e));
-
-    });
+  private cleanTitle(dirtyTitle: string): string {
+    let dt = dirtyTitle.toLowerCase();
+    return this._replacables.reduce((prev, curr) => prev.split(curr).join(""), dt);
   }
 
   private prepare(movie: any): Movie{

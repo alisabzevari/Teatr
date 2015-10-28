@@ -27,12 +27,13 @@ export class Movies {
     return Promise.all(promises).then(result => result.filter(r => r));
   }
 
-  public openInImdb(movie: Movie) {
-    shell.openExternal(`http://www.imdb.com/title/${movie.imdbID}`);
-  }
 
   public explore(movie: Movie) {
     shell.showItemInFolder(movie.folderAddress);
+  }
+
+  public openInImdb(movie: Movie) {
+    shell.openExternal(`http://www.imdb.com/title/${movie.imdbID}`);
   }
 
   public openSubtitles(movie: Movie) {
