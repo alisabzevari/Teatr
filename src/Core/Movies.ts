@@ -1,7 +1,7 @@
 import {autoinject} from "aurelia-framework";
 import {Movie} from "../Core/Movie";
-import fs = require("fs");
-import path = require("path");
+import * as fs from "fs";
+import * as path from "path";
 import {SettingsProvider} from "./SettingsProvider";
 import {MovieDiscovery} from "./MovieDiscovery";
 import {shell} from "./Electron";
