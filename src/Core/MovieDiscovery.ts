@@ -17,12 +17,14 @@ export class MovieDiscovery {
     let promises = unDiscoveredFolders.map(f => this.discoverMovieByDirectory(f));
     return promises;
   }
-  
+
   private discoverMovieByDirectory(folderName: string): Promise<Movie> {
     return this.getMovieInfo(path.basename(folderName))
       .then(movie => {
-        let movieInfoFile = path.join(folderName, "MovieInfo.json");
-        fs.writeFileSync(movieInfoFile, JSON.stringify(movie));
+        if (movie) {
+          let movieInfoFile = path.join(folderName, "MovieInfo.json");
+          fs.writeFileSync(movieInfoFile, JSON.stringify(movie));
+        }
         return movie;
       });
   }
@@ -48,7 +50,10 @@ export class MovieDiscovery {
         let body = "";
         response.on("data", d => body += d);
         response.on("end", () => resolve(this.prepare(JSON.parse(body))));
-      }).on("error", e => reject(e));
+      }).on("error", e => {
+        console.error(e);
+        resolve(null);
+      });
     });
   }
 
@@ -64,7 +69,10 @@ export class MovieDiscovery {
           else
             resolve("");
         });
-      }).on("error", e => reject(e));
+      }).on("error", e => {
+        console.error(e);
+        resolve("");
+      });
     });
   }
 
@@ -96,6 +104,22 @@ export class MovieDiscovery {
 
   private firstToLower(str: string): string {
     return str.charAt(0).toLowerCase() + str.slice(1);
+  }
+
+  public getDiscoveredMoviesInFolder(folderName: string): number {
+    if (fs.existsSync(folderName)) {
+      let folders = fs.readdirSync(folderName).map(p => path.join(folderName, p)).filter(p => fs.lstatSync(p).isDirectory());
+      return folders.filter(f => this.hasBeenDiscovered(f)).length;
+    }
+    return null;
+  }
+
+  public getUnDiscoveredMoviesInFolder(folderName: string): number {
+    if (fs.existsSync(folderName)) {
+      let folders = fs.readdirSync(folderName).map(p => path.join(folderName, p)).filter(p => fs.lstatSync(p).isDirectory());
+      return folders.filter(f => !this.hasBeenDiscovered(f)).length;
+    }
+    return null;
   }
 
 }

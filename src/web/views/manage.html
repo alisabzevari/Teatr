@@ -12,22 +12,22 @@
         </tr>
       </thead>
       <tbody>
-        <template repeat.for="setting of settings.movieFolders">
+        <template repeat.for="status of movieFoldersStatus">
           <tr>
             <td>
-              <mat-chk checked.two-way="setting.active" change.delegate="$parent.saveChanges()"></mat-chk>
+              <mat-chk checked.two-way="status.active" change.delegate="$parent.saveChanges()"></mat-chk>
             </td>
-            <td>${setting.path}</td>
-            <td colspan="3" if.bind="$parent.discovering[$index]">
+            <td>${status.path}</td>
+            <td colspan="3" if.bind="$parent.movieFoldersStatus[$index].discovering">
               <div class="progress" style="width:100%">
-                <div class="determinate" style="width: ${$parent.discovering[$index]}%"></div>
+                <div class="determinate" style="width: ${$parent.movieFoldersStatus[$index].discovering}%"></div>
               </div>
             </td>
-            <template if.bind="!$parent.discovering[$index]">
-              <td></td>
-              <td></td>
+            <template if.bind="!$parent.movieFoldersStatus[$index].discovering">
+              <td>${status.discoveredCount}</td>
+              <td>${status.unDiscoveredCount}</td>
               <td>
-                <a href="" title="Discover Movies" click.trigger="$parent.discoverMoviesInDirectory(setting.path, $index)">
+                <a href="" title="Discover Movies" click.trigger="$parent.discoverMoviesInDirectory(status.path, $index)">
                   <i class="material-icons">autorenew</i>
                 </a>
               </td>
