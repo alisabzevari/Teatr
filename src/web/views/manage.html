@@ -12,19 +12,28 @@
         </tr>
       </thead>
       <tbody>
-        <tr repeat.for="setting of settings.movieFolders">
-          <td>
-            <mat-chk checked.two-way="setting.active" change.delegate="$parent.saveChanges()"></mat-chk>
-          </td>
-          <td>${setting.path}</td>
-          <td></td>
-          <td></td>
-          <td>
-            <a title="Discover Movies">
-              <i class="material-icons">autorenew</i>
-            </a>
-          </td>
-        </tr>
+        <template repeat.for="setting of settings.movieFolders">
+          <tr>
+            <td>
+              <mat-chk checked.two-way="setting.active" change.delegate="$parent.saveChanges()"></mat-chk>
+            </td>
+            <td>${setting.path}</td>
+            <td colspan="3" if.bind="$parent.discovering[$index]">
+              <div class="progress" style="width:100%">
+                <div class="determinate" style="width: ${$parent.discovering[$index]}%"></div>
+              </div>
+            </td>
+            <template if.bind="!$parent.discovering[$index]">
+              <td></td>
+              <td></td>
+              <td>
+                <a href="" title="Discover Movies" click.trigger="$parent.discoverMoviesInDirectory(setting.path, $index)">
+                  <i class="material-icons">autorenew</i>
+                </a>
+              </td>
+            </template>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>

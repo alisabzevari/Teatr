@@ -10,24 +10,26 @@ export class MovieDiscovery {
     "x264", "_", "noscr", "jns", ".", "[", "]", "(", ")", "ganool", "1080", "farsi", "dubbed", "tinymovies", "amiable", "shaanig",
     "web-dl", "5.1ch", "chd3d", "x264", "dts"];
 
-// TODO: fix resolve here. the funtion does not properly resolves. It could be better to resolve with list of discovered movies 
-  public discoverMoviesInDirectory(dir: string): Promise<void> {
-    return new Promise<void>((resolve, reject) => {
-      let folders = fs.readdirSync(dir).map(p => path.join(dir, p)).filter(p => fs.lstatSync(p).isDirectory());
-      folders.forEach(folder => {
-        let movieInfoPath = path.join(folder, "MovieInfo.json");
-        if (!fs.existsSync(movieInfoPath)) {
-          this.getMovieInfo(path.basename(folder))
-            .then(movieInfo => {
-              if (movieInfo) {
-                fs.writeFileSync(movieInfoPath, JSON.stringify(movieInfo));
-                console.log(`Finished discovering ${movieInfo.title}`);
-              }
-            });
-        }
+  // TODO: fix resolve here. the funtion does not properly resolves. It could be better to resolve with list of discovered movies 
+  public discoverMoviesInDirectory(dir: string): Promise<Movie>[] {
+    let folders = fs.readdirSync(dir).map(p => path.join(dir, p)).filter(p => fs.lstatSync(p).isDirectory());
+    let unDiscoveredFolders = folders.filter(f => !this.hasBeenDiscovered(f));
+    let promises = unDiscoveredFolders.map(f => this.discoverMovieByDirectory(f));
+    return promises;
+  }
+  
+  private discoverMovieByDirectory(folderName: string): Promise<Movie> {
+    return this.getMovieInfo(path.basename(folderName))
+      .then(movie => {
+        let movieInfoFile = path.join(folderName, "MovieInfo.json");
+        fs.writeFileSync(movieInfoFile, JSON.stringify(movie));
+        return movie;
       });
-      resolve();
-    });
+  }
+
+  private hasBeenDiscovered(folderName: string): boolean {
+    let movieInfoFile = path.join(folderName, "MovieInfo.json");
+    return fs.existsSync(movieInfoFile);
   }
 
   public getMovieInfo(query: string): Promise<Movie> {
@@ -71,11 +73,11 @@ export class MovieDiscovery {
     return this._replacables.reduce((prev, curr) => prev.split(curr).join(""), dt);
   }
 
-  private prepare(movie: any): Movie{
+  private prepare(movie: any): Movie {
     return this.fixArrays(this.toCamelCase(movie));
   }
-  
-  private fixArrays(movie: any): Movie{
+
+  private fixArrays(movie: any): Movie {
     let result = _.clone(movie);
     result.actors = result.actors.split(",").map(s => s.trim());
     result.genre = result.genre.split(",").map(s => s.trim());
