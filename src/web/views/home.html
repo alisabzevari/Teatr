@@ -10,7 +10,7 @@
           <br/>
           <span class="row">
             <span repeat.for="genre of filterObj.genres" class="col s2">
-              <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.trigger="$parent.change()"></mat-chk>
+              <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.delegate="$parent.change()"></mat-chk>
             </span>
           </span>
           <br/>
