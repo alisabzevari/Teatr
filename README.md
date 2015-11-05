@@ -2,7 +2,7 @@
 This is an Electron application that manages my movies in my hard disks. It has these features:
 
 1. Reads movie folders and finds movie information from imdb.
-2. Helps user to filter and search in his/her movies.
+2. Helps user to filter and search in their movies.
 
 ## Technologies
 The application has been written initially with C# Winforms. Actually this project is my laboratory to test new frameworks and technologies. Code of some of these technolgies are in other branches. The main one I am using now are:
@@ -22,6 +22,8 @@ npm install -g typescript
 npm install -g electron-prebuilt
 npm install -g jspm
 npm install
+cd src
 jspm install
+tsc
 electron .
 ```

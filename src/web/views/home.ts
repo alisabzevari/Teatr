@@ -13,7 +13,11 @@ export class Home {
   constructor(private moviesManager: Movies) {
     this.moviesManager.getAll()
       .then(movies => {
-        this.filteredMovies = this.movies = movies;
+        this.filteredMovies = this.movies = movies.sort((a, b) => {
+          if (a.title > b.title) return 1;
+          if (a.title < b.title) return -1;
+          return 0;
+        });
         this.createFilterMaterials();
       });
   }
