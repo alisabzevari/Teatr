@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <h3>Manage</h3>
-    <table class="bordered hoverable responsive">
+    <table class="bordered responsive">
       <thead>
         <tr>
+          <th>Active</th>
           <th>Path</th>
           <th>Discovered Movies</th>
           <th>Undiscovered Movies</th>
@@ -11,16 +12,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
+        <tr repeat.for="setting of settings.movieFolders">
+          <td>
+            <mat-chk checked.two-way="setting.active" change.delegate="$parent.saveChanges()"></mat-chk>
+          </td>
+          <td>${setting.path}</td>
           <td></td>
           <td></td>
           <td>
-            <i class="material-icons">refresh</i>
-            <i class="material-icons">refresh</i>
+            <a title="Discover Movies">
+              <i class="material-icons">autorenew</i>
+            </a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+<!--TODO: I couldn't use materialize tooltip for discover movies button-->

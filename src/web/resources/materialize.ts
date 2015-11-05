@@ -1,4 +1,6 @@
 import {autoinject, customAttribute, customElement, inject} from "aurelia-framework";
+import {} from "materialize";
+
 
 @customAttribute("materialize", {})
 @autoinject()
@@ -13,6 +15,8 @@ export class MaterializeAttr {
       $(this.element).materialbox();
     if (this.element.classList.contains("collapsible"))
       $(this.element).collapsible();
+    if (this.element.classList.contains("tooltipped"))
+      $(this.element).tooltip();
   }
 }
 

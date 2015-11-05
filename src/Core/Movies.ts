@@ -15,7 +15,7 @@ export class Movies {
     let promises = [];
     let movieDiscovery = new MovieDiscovery();
     this.settingsProvider.movieFolders
-      .filter(mf => mf.active)
+      .filter(mf => mf.active && fs.existsSync(mf.path))
       .reduce((prev, mf) => prev.concat(fs.readdirSync(mf.path).map(p => path.join(mf.path, p)).filter(path => fs.lstatSync(path).isDirectory())), [])
       .forEach(folder => {
         let promise = new Promise((resolve, reject) => {
