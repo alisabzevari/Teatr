@@ -28,6 +28,7 @@ export class Home {
       .map(movie => movie.genre)
       .flatten()
       .uniq()
+      .sortBy(g => g)
       .value();
     _.forEach(genreNames, g => {
       this.filterObj.genres.push({ name: g, selected: true });

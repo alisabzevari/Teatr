@@ -32,7 +32,6 @@
         "./web/resources/materialize.ts",
         "./web/views/home.ts",
         "./web/views/manage.ts",
-        "./web/views/settings.ts",
         "./teatr-main.ts",
         "./tests/SettingsProvider-tests.ts",
         "./tests/MovieDiscovery-tests.ts",
