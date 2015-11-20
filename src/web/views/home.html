@@ -1,25 +1,32 @@
 <template>
   <ul materialize="" class="collapsible" data-collapsible="accordion">
     <li>
-      <div class="collapsible-header"><i class="material-icons">search</i>Discover Movies</div>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
       <div class="collapsible-body">
-          <div class="input-field">
-            <i class="material-icons prefix">account_circle</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">First Name</label>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <div class="input-field">
+              <i class="material-icons prefix">movie</i>
+              <!--TODO: add support for debounce  "& debounce:200"-->
+              <input id="icon_prefix" type="text" value.bind="filterObj.title" keyup.trigger="change()">
+              <label for="icon_prefix">Movie Name</label>
+            </div>
           </div>
-        <p>
-          <strong>Genres:</strong>
-          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectAllGenres()">Select All</a>
-          <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectNoneGenres()">Select None</a>
-          <br/>
-          <span class="row">
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <strong>Genres:</strong>
+            <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectAllGenres()">Select All</a>
+            <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectNoneGenres()">Select None</a>
+            <br/>
+            <span class="row">
             <span repeat.for="genre of filterObj.genres" class="col s2">
               <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.delegate="$parent.change()"></mat-chk>
             </span>
-          </span>
-          <br/>
-        </p>
+            </span>
+          </div>
+        </div>
+        <br/>
       </div>
     </li>
   </ul>

@@ -23,7 +23,7 @@ export class MovieDiscovery {
       .then(movie => {
         if (movie) {
           let movieInfoFile = path.join(folderName, "MovieInfo.json");
-          fs.writeFileSync(movieInfoFile, JSON.stringify(movie));
+          fs.writeFileSync(movieInfoFile, JSON.stringify(movie, null, 3));
         }
         return movie;
       });

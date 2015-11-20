@@ -18,7 +18,7 @@ export class SettingsProvider {
       let settingsObj = {
         movieFolders: this.movieFolders
       };
-      fs.writeFile(this.settingsFileName, JSON.stringify(settingsObj), (err) => {
+      fs.writeFile(this.settingsFileName, JSON.stringify(settingsObj, null, 3), (err) => {
         if (err)
           reject(err);
         else

@@ -18,6 +18,10 @@ export class Home {
           if (a.title < b.title) return -1;
           return 0;
         });
+        this.filteredMovies.forEach(m => {
+          if (m.poster === "N/A")
+            m.poster = "";
+        });
         this.createFilterMaterials();
       });
   }
@@ -38,6 +42,9 @@ export class Home {
   public change() {
     var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
     this.filteredMovies = _.filter(this.movies, movie => _.any(movie.genre, g => _.contains(selectedGenres, g)));
+    if (this.filterObj.title) {
+      this.filteredMovies = this.filteredMovies.filter(m => m.title.indexOf(this.filterObj.title) > -1);
+    }
   }
 
   public explore(movie: Movie) {
