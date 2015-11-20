@@ -26,7 +26,17 @@
             </span>
           </div>
         </div>
-        <br/>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <strong>Min Imdb Rating: </strong> ${filterObj.minImdbRating}
+            <p class="range-field">
+              <input type="range" min="0" max="10" value.bind="filterObj.minImdbRating" change.trigger="change()">
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">${filteredMovies.length} movies found!</div>
+        </div>
       </div>
     </li>
   </ul>

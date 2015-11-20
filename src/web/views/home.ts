@@ -41,10 +41,12 @@ export class Home {
 
   public change() {
     var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
-    this.filteredMovies = _.filter(this.movies, movie => _.any(movie.genre, g => _.contains(selectedGenres, g)));
-    if (this.filterObj.title) {
-      this.filteredMovies = this.filteredMovies.filter(m => m.title.indexOf(this.filterObj.title) > -1);
-    }
+    this.filteredMovies = _.filter(this.movies, movie => {
+      let genre = _.any(movie.genre, g => _.contains(selectedGenres, g));
+      let title = !this.filterObj.title || (movie.title.indexOf(this.filterObj.title) > -1);
+      let minImdbRating = !this.filterObj.minImdbRating || movie.imdbRating >= this.filterObj.minImdbRating;
+      return genre && title && minImdbRating;
+    });
   }
 
   public explore(movie: Movie) {
