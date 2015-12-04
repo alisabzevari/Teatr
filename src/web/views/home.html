@@ -64,7 +64,7 @@
             <p>${movie.genre.join(', ')}</p>
             <p>${movie.year}</p>
             <p>
-              <strong>Director: </strong> ${movie.director}</p>
+              <strong>Director: </strong> <a click.delegate="$parent.googleSearch(movie.director)" class="hand">${movie.director}</a></p>
             <p>
               <strong>Actors: </strong> ${movie.actors.join(', ')}</p>
             <p>

@@ -43,7 +43,7 @@ export class Home {
     var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
     this.filteredMovies = _.filter(this.movies, movie => {
       let genre = _.any(movie.genre, g => _.contains(selectedGenres, g));
-      let title = !this.filterObj.title || (movie.title.indexOf(this.filterObj.title) > -1);
+      let title = !this.filterObj.title || (movie.title.toLowerCase().indexOf(this.filterObj.title.toLowerCase()) > -1);
       let minImdbRating = !this.filterObj.minImdbRating || movie.imdbRating >= this.filterObj.minImdbRating;
       return genre && title && minImdbRating;
     });
@@ -59,6 +59,10 @@ export class Home {
 
   public openSubtitles(movie: Movie) {
     this.moviesManager.openSubtitles(movie);
+  }
+
+  public googleSearch(query: string) {
+    this.moviesManager.googleSearch(query);
   }
 
   public selectAllGenres() {

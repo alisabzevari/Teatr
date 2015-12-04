@@ -39,6 +39,10 @@ export class Movies {
   public openSubtitles(movie: Movie) {
     shell.openExternal(`http://subscene.com/subtitles/title?q=${movie.title}`);
   }
+  
+  public googleSearch(query: string){
+    shell.openExternal(`http://www.google.com/search?q=${query}`);
+  }
 
   private getMovieInfo(address: string): Movie {
     var fileName = path.join(address, "MovieInfo.json");

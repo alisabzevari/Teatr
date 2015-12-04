@@ -1,15 +1,15 @@
 {
    "movieFolders": [
       {
-         "active": false,
+         "active": true,
          "path": "D:\\Home\\Videos"
       },
       {
-         "active": false,
+         "active": true,
          "path": "E:\\Movies 1"
       },
       {
-         "active": false,
+         "active": true,
          "path": "E:\\Movies 2"
       },
       {
@@ -17,7 +17,7 @@
          "path": "E:\\Movies 3"
       },
       {
-         "active": false,
+         "active": true,
          "path": "E:\\Movies 4"
       }
    ]
