@@ -18,5 +18,10 @@
   "homepage": "https://github.com/alisabzevari/Teatr#readme",
   "devDependencies": {
     "jspm": "^0.16.18"
+  },
+  "jspm": {
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
   }
 }
