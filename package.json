@@ -17,15 +17,38 @@
   },
   "homepage": "https://github.com/alisabzevari/Teatr#readme",
   "devDependencies": {
-    "jspm": "^0.16.18"
+    "jspm": "^0.16.18",
+    "typescript": "^1.7.5"
   },
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
-      "lodash": "npm:lodash@^3.10.1"
+      "lodash": "npm:lodash@^3.10.1",
+      "materialize": "github:Dogfalo/materialize@master"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
+    },
+    "overrides": {
+      "github:Dogfalo/materialize@master": {
+        "files": [
+          "dist"
+        ],
+        "main": "dist/js/materialize",
+        "shim": {
+          "dist/js/materialize": {
+            "deps": [
+              "jquery",
+              "../css/materialize.css!"
+            ],
+            "exports": "$"
+          }
+        },
+        "dependencies": {
+          "jquery": "github:components/jquery",
+          "css": "github:systemjs/plugin-css"
+        }
+      }
     }
   }
 }
