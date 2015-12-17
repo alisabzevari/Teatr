@@ -9,6 +9,12 @@
     },
     "lodash/lodash.d.ts": {
       "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
+    },
+    "rx/rx.d.ts": {
+      "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
+    },
+    "rx/rx-lite.d.ts": {
+      "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
     }
   }
 }
