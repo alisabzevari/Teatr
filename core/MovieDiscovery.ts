@@ -1,9 +1,24 @@
 import {Movie} from "./Movie";
 import * as _ from "lodash";
+import * as FileSystem from "../platform/FileSystem";
+import * as Http from "../platform/Http";
 
-import fs = require("fs");
-import path = require("path");
-import http = require("http");
+let _replacables = ["scoop", "webdl", "brrip", "mkv", "yify", "paroos", "blueray", "720p", "dvdrip", "fxg", "eng", "far",
+    "axxo", "xvid", "divx", "nedivx", "-", "klaxxon", "zektorm", "fxm", "1080p", "dvdrip", "psig", "hdmicro", "kickass", "brrip",
+    "x264", "_", "noscr", "jns", ".", "[", "]", "(", ")", "ganool", "1080", "farsi", "dubbed", "tinymovies", "amiable", "shaanig",
+    "web-dl", "5.1ch", "chd3d", "x264", "dts"];
+
+export function discoverMovie(dirName: string): Promise<Movie>{
+  
+}
+
+
+
+
+
+
+
+
 
 export class MovieDiscovery {
   private _replacables = ["scoop", "webdl", "brrip", "mkv", "yify", "paroos", "blueray", "720p", "dvdrip", "fxg", "eng", "far",
@@ -13,6 +28,9 @@ export class MovieDiscovery {
 
   // TODO: fix resolve here. the funtion does not properly resolves. It could be better to resolve with list of discovered movies 
   public discoverMoviesInDirectory(dir: string): Promise<Movie>[] {
+
+
+
     let folders = fs.readdirSync(dir).map(p => path.join(dir, p)).filter(p => fs.lstatSync(p).isDirectory());
     let unDiscoveredFolders = folders.filter(f => !this.hasBeenDiscovered(f));
     let promises = unDiscoveredFolders.map(f => this.discoverMovieByDirectory(f));
@@ -59,22 +77,12 @@ export class MovieDiscovery {
   }
 
   private getImDbId(movieName: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      http.get("http://www.google.com/search?q=imdb+" + movieName, (response) => {
-        let body = "";
-        response.on("data", d => body += d);
-        response.on("end", () => {
-          let imdbUrls = /http:\/\/www.imdb.com\/title\/tt\d{7}\//.exec(body);
-          if (imdbUrls)
-            resolve(imdbUrls[0].match(/tt\d{7}/)[0]);
-          else
-            resolve("");
-        });
-      }).on("error", e => {
-        console.error(e);
-        resolve("");
+    return Http.get(`http://www.google.com/search?q=imdb+${movieName}`)
+      .then(response => response.content)
+      .then(content => {
+        let imdbUrls = /http:\/\/www.imdb.com\/title\/tt\d{7}\//.exec(content);
+        return imdbUrls ? imdbUrls[0].match(/tt\d{7}/)[0] : "";
       });
-    });
   }
 
   private cleanTitle(dirtyTitle: string): string {
@@ -115,7 +123,15 @@ export class MovieDiscovery {
     return null;
   }
 
-  public getUnDiscoveredMoviesInFolder(folderName: string): number {
+  public getUnDiscoveredCountOfMoviesInFolder(folderName: string): Promise<number> {
+    FileSystem.pathExists(folderName)
+      .then(exists => {
+        if (!exists)
+          return null;
+        FileSystem.getDirContents(folderName)
+      });
+      
+      
     if (fs.existsSync(folderName)) {
       let folders = fs.readdirSync(folderName).map(p => path.join(folderName, p)).filter(p => fs.lstatSync(p).isDirectory());
       return folders.filter(f => !this.hasBeenDiscovered(f)).length;
