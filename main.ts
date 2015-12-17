@@ -7,5 +7,5 @@ bootstrap((aurelia: Aurelia) => {
     .standardConfiguration()
     .developmentLogging()
     .feature("resources", {});
-  aurelia.start().then(a => a.setRoot());
+  aurelia.start().then(a => a.setRoot("app", document.querySelector("body")));
 });
