@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "module": "umd",
-        "target": "ES5",
+        "module": "system",
+        "target": "ES6",
         "declaration": false,
         "noImplicitAny": false,
         "rootDir": ".",
