@@ -1,8 +1,15 @@
 {
   "name": "teatr",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "My Movies Manager",
-  "main": "index.js",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "jspm": "^0.16.19",
+    "tsd": "^0.6.5",
+    "typescript": "^1.7.5"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,31 +23,21 @@
     "url": "https://github.com/alisabzevari/Teatr/issues"
   },
   "homepage": "https://github.com/alisabzevari/Teatr#readme",
-  "devDependencies": {
-    "jspm": "^0.16.18",
-    "tsd": "^0.6.5",
-    "typescript": "^1.7.5"
-  },
   "jspm": {
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
-      "lodash": "npm:lodash@^3.10.1",
-      "materialize": "github:Dogfalo/materialize@master"
+      "materialize": "github:Dogfalo/materialize@^0.97.3"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4",
-      "typescript": "npm:typescript@^1.6.2"
+      "core-js": "npm:core-js@^1.1.4"
     },
     "overrides": {
-      "github:Dogfalo/materialize@master": {
-        "files": [
-          "dist"
-        ],
-        "main": "dist/js/materialize",
+      "github:Dogfalo/materialize@0.97.3": {
+        "main": "js/materialize",
         "shim": {
-          "dist/js/materialize": {
+          "js/materialize": {
             "deps": [
               "jquery",
               "../css/materialize.css!"
