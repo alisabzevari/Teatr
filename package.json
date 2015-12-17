@@ -1,0 +1,22 @@
+{
+  "name": "teatr",
+  "version": "1.0.0",
+  "description": "My Movies Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisabzevari/Teatr.git"
+  },
+  "author": "Ali Sabzevari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alisabzevari/Teatr/issues"
+  },
+  "homepage": "https://github.com/alisabzevari/Teatr#readme",
+  "devDependencies": {
+    "jspm": "^0.16.18"
+  }
+}
