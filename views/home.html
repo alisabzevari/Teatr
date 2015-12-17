@@ -1,0 +1,90 @@
+<template>
+  <ul materialize="" class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">search</i>Search</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <div class="input-field">
+              <i class="material-icons prefix">movie</i>
+              <!--TODO: add support for debounce  "& debounce:200"-->
+              <input id="icon_prefix" type="text" value.bind="filterObj.title" keyup.trigger="change()">
+              <label for="icon_prefix">Movie Name</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <strong>Genres:</strong>
+            <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectAllGenres()">Select All</a>
+            <a class="btn-flat waves-effect waves-teal" class="hand" click.trigger="selectNoneGenres()">Select None</a>
+            <br/>
+            <span class="row">
+            <span repeat.for="genre of filterObj.genres" class="col s2">
+              <mat-chk value.bind="genre.name" checked.two-way="genre.selected" change.delegate="$parent.change()"></mat-chk>
+            </span>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">
+            <strong>Min Imdb Rating: </strong> ${filterObj.minImdbRating}
+            <p class="range-field">
+              <input type="range" min="0" max="10" step="0.1" value.bind="filterObj.minImdbRating" change.trigger="change()">
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s10 offset-s1">${filteredMovies.length} movies found!</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="row">
+    <div class="col s12 m6 l4" repeat.for="movie of filteredMovies">
+      <div class="card large hoverable">
+        <div class="card-image">
+          <!-- <img class="activator" src="http://www.bing.com/az/hprichbg/rb/NaturalBridgesStateBeach_ROW13162668940_1366x768.jpg"> -->
+          <img materialize="" class="materialboxed" width="800" src.bind="movie.poster" src="http://materializecss.com/images/sample-1.jpg">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">${movie.title}<i class="material-icons right">more_vert</i></span>
+          <p>
+            <h5>${movie.imdbRating}</h5>
+          </p>
+          <p>${movie.genre.join(', ')}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">${movie.title}<i class="material-icons right">close</i></span>
+          <p>
+            <h5>${movie.imdbRating}</h5>
+          </p>
+          <div style="height: 320px; overflow-y:scroll;">
+            <p>${movie.genre.join(', ')}</p>
+            <p>${movie.year}</p>
+            <p>
+              <strong>Director: </strong> <a click.delegate="$parent.googleSearch(movie.director)" class="hand">${movie.director}</a></p>
+            <p>
+              <strong>Actors: </strong> ${movie.actors.join(', ')}</p>
+            <p>
+              <strong>Country: </strong> ${movie.country}</p>
+            <p>
+              <strong>Language: </strong> ${movie.language}</p>
+            <p>
+              <strong>Plot: </strong> ${movie.plot}</p>
+            <p>
+              <strong>Runtime: </strong> ${movie.runtime}</p>
+            <p>
+              <strong>Released: </strong> ${movie.released}</p>
+          </div>
+          <div class="card-action">
+            <a click.delegate="$parent.explore(movie)" class="hand">Open</a>
+            <a click.delegate="$parent.openInImdb(movie)" class="hand">View in IMDB</a>
+            <a click.delegate="$parent.openSubtitles(movie)" class="hand">Subtitles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

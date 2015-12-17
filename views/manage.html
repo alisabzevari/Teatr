@@ -1,0 +1,42 @@
+<template>
+  <div class="container">
+    <h3>Manage</h3>
+    <table class="bordered responsive">
+      <thead>
+        <tr>
+          <th>Active</th>
+          <th>Path</th>
+          <th>Discovered Movies</th>
+          <th>Undiscovered Movies</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <template repeat.for="status of movieFoldersStatus">
+          <tr>
+            <td>
+              <mat-chk checked.two-way="status.active" change.delegate="$parent.saveChanges()"></mat-chk>
+            </td>
+            <td>${status.path}</td>
+            <td colspan="3" if.bind="$parent.movieFoldersStatus[$index].discovering">
+              <div class="progress" style="width:100%">
+                <div class="determinate" style="width: ${$parent.movieFoldersStatus[$index].discovering}%"></div>
+              </div>
+            </td>
+            <template if.bind="!$parent.movieFoldersStatus[$index].discovering">
+              <td>${status.discoveredCount}</td>
+              <td>${status.unDiscoveredCount}</td>
+              <td>
+                <a href="" title="Discover Movies" click.trigger="$parent.discoverMoviesInDirectory(status.path, $index)">
+                  <i class="material-icons">autorenew</i>
+                </a>
+              </td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<!--TODO: I couldn't use materialize tooltip for discover movies button-->
