@@ -27,31 +27,12 @@
     "dependencies": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
       "lodash": "npm:lodash@^3.10.1",
-      "materialize": "github:Dogfalo/materialize@^0.97.3",
-      "rx": "npm:rx@^4.0.7"
+      "materialize": "github:Dogfalo/materialize@^0.97.5"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
-    },
-    "overrides": {
-      "github:Dogfalo/materialize@0.97.3": {
-        "main": "js/materialize",
-        "shim": {
-          "js/materialize": {
-            "deps": [
-              "jquery",
-              "../css/materialize.css!"
-            ],
-            "exports": "$"
-          }
-        },
-        "dependencies": {
-          "jquery": "github:components/jquery",
-          "css": "github:systemjs/plugin-css"
-        }
-      }
     }
   }
 }

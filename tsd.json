@@ -10,11 +10,20 @@
     "lodash/lodash.d.ts": {
       "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
     },
-    "rx/rx.d.ts": {
-      "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
+    "es6-promise/es6-promise.d.ts": {
+      "commit": "5e960679e6f9ae6ce905b1db0ad36fc189cd2eca"
     },
-    "rx/rx-lite.d.ts": {
-      "commit": "78ba6e41543e5ababbd1dda19797601be3c1f304"
+    "filewriter/filewriter.d.ts": {
+      "commit": "5e960679e6f9ae6ce905b1db0ad36fc189cd2eca"
+    },
+    "webrtc/MediaStream.d.ts": {
+      "commit": "5e960679e6f9ae6ce905b1db0ad36fc189cd2eca"
+    },
+    "filesystem/filesystem.d.ts": {
+      "commit": "5e960679e6f9ae6ce905b1db0ad36fc189cd2eca"
+    },
+    "chrome/chrome.d.ts": {
+      "commit": "5e960679e6f9ae6ce905b1db0ad36fc189cd2eca"
     }
   }
 }
