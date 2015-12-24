@@ -14,7 +14,6 @@
     {"fileSystem": ["write", "retainEntries", "directory"]},
     "storage"
   ],
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "icons": {
     "16": "styles/teatr-16.png",
     "128": "styles/teatr-128.png"

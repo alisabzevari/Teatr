@@ -1,6 +1,6 @@
 import {autoinject} from "aurelia-framework";
 import {Router} from "aurelia-router";
-import "./app.html!";
+// import "./app.html!";
 import "views/manage";
 
 @autoinject()
