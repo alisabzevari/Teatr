@@ -196,10 +196,6 @@ node_modules/
 jspm_packages/
 
 # Aurelia Items
-src/app/**/*.js
-!src/app/config.js
-!typings/
-!src/app/lib/
-
-# Electron Items
 *.js
+!config.js
+!typings/

@@ -1,23 +1,21 @@
-<template>
-  <div class="navbar-fixed">
+<div class="navbar-fixed">
     <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo waves-effect waves-light">&nbsp; Teatr &nbsp;</a>
-        <a materialize="" href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-            <a href.bind="row.href" class="waves-effect waves-light">${row.title}</a>
-          </li>
-        </ul>
-        <ul class="side-nav" id="mobile-demo">
-          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-            <a href.bind="row.href" class="waves-effect waves-light">${row.title}</a>
-          </li>
-        </ul>
-      </div>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo waves-effect waves-light">&nbsp; Teatr &nbsp;</a>
+            <a materialize="" href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                    <a href.bind="row.href" class="waves-effect waves-light">${row.title}</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                    <a href.bind="row.href" class="waves-effect waves-light">${row.title}</a>
+                </li>
+            </ul>
+        </div>
     </nav>
-  </div>
-  <div class="container">
+</div>
+<div class="container">
     <router-view></router-view>
-  </div>
-</template>
+</div>

@@ -6,3 +6,7 @@ interface JQuery {
 	materialbox();
 	sideNav();
 }
+
+declare var Materialize : {
+    toast(contents: string, timeout: number);
+}
