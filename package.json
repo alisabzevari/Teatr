@@ -1,0 +1,42 @@
+{
+  "name": "teatr",
+  "version": "0.2.0",
+  "description": "",
+  "main": "teatr-main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/alisabzevari/teatr"
+  },
+  "author": "Ali Sabzevari",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "electron-prebuilt": "^0.33.3",
+    "jspm": "^0.16.11",
+    "mocha": "^2.3.3"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "web"
+    },
+    "dependencies": {
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1",
+      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.0.7",
+      "aurelia-loader-default": "npm:aurelia-loader-default@^1.0.0-beta.1.0.1",
+      "aurelia-router": "npm:aurelia-router@^1.0.0-beta.1",
+      "fs": "github:jspm/nodelibs-fs@^0.1.2",
+      "http": "github:jspm/nodelibs-http@^1.7.1",
+      "lodash": "npm:lodash@^3.10.1",
+      "materialize": "github:Dogfalo/materialize@^0.97.5",
+      "path": "github:jspm/nodelibs-path@^0.1.0"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
