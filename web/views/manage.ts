@@ -1,5 +1,5 @@
-import {SettingsProvider} from "../../Core/SettingsProvider";
-import {MovieDiscovery} from "../../Core/MovieDiscovery";
+import {SettingsProvider} from "../../core/SettingsProvider";
+import {MovieDiscovery} from "../../core/MovieDiscovery";
 import {autoinject} from "aurelia-framework";
 import {} from "materialize";
 

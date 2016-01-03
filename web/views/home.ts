@@ -1,7 +1,7 @@
 import {autoinject} from "aurelia-framework";
-import {Movie} from "../../Core/Movie";
+import {Movie} from "../../core/Movie";
 import {FilterObject} from "../model/FilterObject";
-import {Movies} from "../../Core/Movies";
+import {Movies} from "../../core/Movies";
 import * as _ from "underscore";
 
 @autoinject()
