@@ -195,11 +195,8 @@ ModelManifest.xml
 node_modules/
 jspm_packages/
 
-# Aurelia Items
-src/app/**/*.js
-!src/app/config.js
-!typings/
-!src/app/lib/
-
-# Electron Items
 *.js
+
+# unignore some js files
+!/**/config.js
+!/**/teatr-main.js
