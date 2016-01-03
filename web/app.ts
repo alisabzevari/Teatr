@@ -1,6 +1,8 @@
 import "materialize";
 import {inject} from "aurelia-framework";
 import {Router} from "aurelia-router";
+import "views/home";
+import "views/manage";
 
 @inject(Router)
 export class App {

@@ -1,5 +1,5 @@
 import {autoinject} from "aurelia-framework";
-import {Movie} from "../Core/Movie";
+import {Movie} from "./Movie";
 import * as fs from "fs";
 import * as path from "path";
 import {SettingsProvider} from "./SettingsProvider";

@@ -1,4 +1,5 @@
 import {Aurelia} from "aurelia-framework";
+import "app";
 
 export function configure(aurelia: Aurelia) {
   aurelia.use
