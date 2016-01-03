@@ -2,7 +2,7 @@ import {autoinject} from "aurelia-framework";
 import {Movie} from "../../Core/Movie";
 import {FilterObject} from "../model/FilterObject";
 import {Movies} from "../../Core/Movies";
-import * as _ from "lodash";
+import * as _ from "underscore";
 
 @autoinject()
 export class Home {
@@ -28,7 +28,7 @@ export class Home {
 
   public createFilterMaterials() {
     this.filterObj.genres = [];
-    var genreNames = _(this.movies)
+    var genreNames = _.chain(this.movies)
       .map(movie => movie.genre)
       .flatten()
       .uniq()
@@ -40,7 +40,7 @@ export class Home {
   }
 
   public change() {
-    var selectedGenres = _(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
+    var selectedGenres = _.chain(this.filterObj.genres).filter(fg => fg.selected).map(fg => fg.name).value();
     this.filteredMovies = _.filter(this.movies, movie => {
       let genre = _.any(movie.genre, g => _.contains(selectedGenres, g));
       let title = !this.filterObj.title || (movie.title.toLowerCase().indexOf(this.filterObj.title.toLowerCase()) > -1);

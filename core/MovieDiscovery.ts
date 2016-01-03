@@ -2,7 +2,7 @@ import * as fs  from "fs";
 import * as path from "path";
 import {Movie} from "./Movie";
 import * as http from "http";
-import * as _ from "lodash";
+import * as _ from "underscore";
 
 export class MovieDiscovery {
   private _replacables = ["scoop", "webdl", "brrip", "mkv", "yify", "paroos", "blueray", "720p", "dvdrip", "fxg", "eng", "far",

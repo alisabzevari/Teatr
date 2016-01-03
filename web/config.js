@@ -23,9 +23,9 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "fs": "github:jspm/nodelibs-fs@0.1.2",
     "http": "github:jspm/nodelibs-http@1.7.1",
-    "lodash": "npm:lodash@3.10.1",
     "materialize": "github:Dogfalo/materialize@0.97.5",
     "path": "github:jspm/nodelibs-path@0.1.0",
+    "underscore": "npm:underscore@1.8.3",
     "github:Dogfalo/materialize@0.97.5": {
       "css": "github:systemjs/plugin-css@0.1.20",
       "jquery": "github:components/jquery@2.1.4"
@@ -207,9 +207,6 @@ System.config({
     },
     "npm:inherits@2.0.1": {
       "util": "github:jspm/nodelibs-util@0.1.0"
-    },
-    "npm:lodash@3.10.1": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:path-browserify@0.0.0": {
       "process": "github:jspm/nodelibs-process@0.1.2"
