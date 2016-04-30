@@ -1,0 +1,25 @@
+{
+  "name": "teatr",
+  "version": "1.0.0",
+  "description": "My Movies Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisabzevari/Teatr.git"
+  },
+  "author": "Ali Sabzevari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alisabzevari/Teatr/issues"
+  },
+  "homepage": "https://github.com/alisabzevari/Teatr#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "tsc": "^1.20150623.0",
+    "webpack": "^1.13.0"
+  }
+}
