@@ -19,7 +19,6 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^2.4.5",
-    "tsc": "^1.20150623.0",
     "webpack": "^1.13.0"
   }
 }
