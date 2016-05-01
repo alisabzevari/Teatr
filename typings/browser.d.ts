@@ -6,3 +6,4 @@
 /// <reference path="browser/ambient/redux/index.d.ts" />
 /// <reference path="browser/ambient/webpack/index.d.ts" />
 /// <reference path="browser/definitions/immutable/index.d.ts" />
+/// <reference path="browser/definitions/lodash/index.d.ts" />

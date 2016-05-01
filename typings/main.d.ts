@@ -6,3 +6,4 @@
 /// <reference path="main/ambient/redux/index.d.ts" />
 /// <reference path="main/ambient/webpack/index.d.ts" />
 /// <reference path="main/definitions/immutable/index.d.ts" />
+/// <reference path="main/definitions/lodash/index.d.ts" />

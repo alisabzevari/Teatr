@@ -2,7 +2,8 @@
   "name": "teatr",
   "version": false,
   "dependencies": {
-    "immutable": "registry:npm/immutable#3.7.6+20160411060006"
+    "immutable": "registry:npm/immutable#3.7.6+20160411060006",
+    "lodash": "registry:npm/lodash#4.0.0+20160416211519"
   },
   "ambientDependencies": {
     "chai": "registry:dt/chai#3.4.0+20160317120654",
