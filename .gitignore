@@ -76,3 +76,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+src/**/*.js
+test/**/*.js
