@@ -36,7 +36,7 @@
 		{
 			"name": "Run Tests",
 			"type": "node",
-			"program": "C:/Users/Ali/AppData/Roaming/npm/node_modules/mocha/bin/_mocha",
+			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
 			"args": [
 				"test/**/*Spec.js"
