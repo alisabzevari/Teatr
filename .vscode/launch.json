@@ -2,6 +2,21 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Run Tests",
+			"type": "node",
+			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+			"stopOnEntry": false,
+			"args": [
+				"test/**/*Spec.js"
+			],
+			"cwd": "${workspaceRoot}/",
+			"runtimeExecutable": null,
+			"env": {
+				"NODE_ENV": "production"
+			},
+			"sourceMaps": true
+		},
+		{
 			"name": "Launch",
 			"type": "node",
 			"request": "launch",
@@ -32,21 +47,6 @@
 			"outDir": null,
 			"localRoot": "${workspaceRoot}",
 			"remoteRoot": null
-		},
-		{
-			"name": "Run Tests",
-			"type": "node",
-			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
-			"stopOnEntry": false,
-			"args": [
-				"test/**/*Spec.js"
-			],
-			"cwd": "${workspaceRoot}/",
-			"runtimeExecutable": null,
-			"env": {
-				"NODE_ENV": "production"
-			},
-			"sourceMaps": true
 		}
 	]
 }

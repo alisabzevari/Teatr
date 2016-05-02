@@ -4,6 +4,7 @@
   "description": "My Movies Manager",
   "main": "index.js",
   "scripts": {
+    "pretest": "tsc",
     "test": "mocha"
   },
   "repository": {
