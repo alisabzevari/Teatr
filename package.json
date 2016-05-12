@@ -4,9 +4,9 @@
   "description": "My Movies Manager",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc -p tsconfig.test.json",
-    "test": "mocha",
-    "build": "tsc -p tsconfig.json"
+    "pretest": "tsc",
+    "test": "mocha \"dist/test/**/*Spec.js\"",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/alisabzevari/Teatr#readme",
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
     "mocha": "^2.4.5",
     "typescript": "^1.8.10",
     "webpack": "^1.13.0"
-  }
+  },
+  "dependencies": {}
 }
