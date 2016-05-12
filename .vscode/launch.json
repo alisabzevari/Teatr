@@ -7,7 +7,7 @@
 			"program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
 			"stopOnEntry": false,
 			"args": [
-				"test/**/*Spec.js"
+				"test/dist/**/*Spec.js"
 			],
 			"cwd": "${workspaceRoot}/",
 			"runtimeExecutable": null,

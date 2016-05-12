@@ -4,7 +4,7 @@
   "description": "My Movies Manager",
   "main": "index.js",
   "scripts": {
-    "pretest": "tsc",
+    "pretest": "tsc -p tsconfig.test.json",
     "test": "mocha"
   },
   "repository": {
